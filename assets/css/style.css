@@ -1,0 +1,184 @@
+* {
+  padding: 0; 
+  margin: 0; 
+  box-sizing: border-box;}
+ 
+
+
+body {
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+ 
+}
+
+header {
+  background-color:#0056b3; ;
+  color: white;
+  padding: 1em;
+  display: flex;           
+  align-items: center;    
+  justify-content: space-between; 
+}
+h1{
+  margin: 0;
+  padding: 1em;
+  font-size: 2em;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+  
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a:hover{
+   background-color: #007bff;
+
+}
+main {
+  padding: 2em;
+}
+
+
+/* Boutons principaux */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+/* User-menu (cache par defaut) */
+#user-menu {
+    display: none;
+}
+
+/* Les grid pour les image */
+.wrapper{
+    width: 1170px;
+    margin: 30px auto;
+    box-sizing: border-box;
+
+}
+.box{border-radius: 3px;
+      background-color:  #007bff;
+   
+}
+.row{
+    display: grid;
+    grid-template-columns:repeat(4,1fr) ;
+    grid-auto-rows: 238px;
+    gap: 25px;
+}
+
+.span1{
+    background-color: #007bff;
+    grid-row: span 2;
+    margin-top: 20px;
+}
+
+.span2{
+    background-color: #007bff;
+    grid-column: span 2;
+    margin-top: 20px;
+}
+.span3{
+     background-color: #007bff;
+    margin-top: 20px;
+}
+
+/* Supprime le fond bleu uniquement pour la box avec l'image */
+.image1-box {
+    background-color: transparent !important;
+}
+.wrapper_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 238px;
+    gap: 30px;
+}
+
+.wrapper_container > .image1-box {
+    grid-column: 1 / -1; /* toute la largeur de la grid */
+    grid-row: 1 / span 2;
+    background-image: url('/Projet_integrateur/assets/images/bannieres/image1.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
+    width: 100%;         
+    height: 100%;        
+    min-height: unset;
+    padding-top: 10px;   
+    box-sizing: border-box;
+}
+
+/* RESPONSIVE ADJUSTMENT */
+@media (max-width: 800px) {
+    .header-container {
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+    }
+    
+    .nav-list {
+        gap: 1.2rem;
+    }
+    
+    .search-form input {
+        width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .branding {
+        order: 1;
+    }
+    
+    .header-actions {
+        order: 2;
+        margin-left: auto;
+    }
+    
+    .main-nav {
+        order: 3;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .nav-list {
+        justify-content: space-around;
+    }
+    
+    .search-form {
+        display: none; /* On mobile, consider a search toggle */
+    }
+    
+    .quick-actions .button.secondary {
+        display: none; /* Hide secondary button on small screens */
+    }
+}
