@@ -138,7 +138,7 @@ Ce projet est sous licence MIT – vous pouvez l’utiliser, le modifier, et le 
 
 ---
 
-Développé avec ❤️ par Fianesothug
+Développé avec ❤️ par Fianesothug en collaboration avec lebossboss
 
 ````
 
