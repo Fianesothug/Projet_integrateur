@@ -1,0 +1,22 @@
+code du push
+
+git add code_sql_table.txt                 # Ajoute les nouveaux fichiers
+git commit -m "Premier commit"     # Crée un commit
+git push origin main               # Envoie sur GitHub
+
+
+création de table
+
+CREATE DATABASE gestion;
+
+USE gestion;
+
+CREATE TABLE client (
+    nom VARCHAR(20),
+    prenom VARCHAR(20),
+    identifiant VARCHAR(20),
+    mot_de_passe VARCHAR(20),
+    adresse VARCHAR(100),
+    email VARCHAR(50),
+    numero VARCHAR(15)
+);
