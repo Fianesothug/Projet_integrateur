@@ -71,6 +71,12 @@
 </div>
 
 <script>
+   // Fonction pour récupérer le sexe sélectionné
+    function SEXE() {
+        var sexeSelect = document.getElementById("sexe");
+        var selectedSexe = sexeSelect.value;
+        return selectedSexe; // Retourne le sexe sélectionné
+    }
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
