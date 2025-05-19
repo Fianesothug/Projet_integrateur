@@ -29,16 +29,30 @@
 
     <div id="Inscription" class="tabcontent">
         <h2>Inscription</h2>
-        <form method="POST">
+        <form method="POST" action="inscription.php">
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" required>
             
             <label for="prenom">Prenom:</label>
             <input type="text" id="prenom" name="prenom" required>
 
-             <label for="numero">Numero de telephone:</label>
-            <input type="text" id="numero" name="numero" required>
+            <label for="sexe">Sexe:</label>
+            <select id="sexe" name="sexe" required>
+                <option value="">Sélectionner sexe</option>
+                <option value="masculin">Masculin</option>
+                <option value="feminin">Féminin</option>
+            </select>
 
+            <label for="pays">Code pays:</label>
+            <select id="pays" name="pays" required>
+                <option value="">Sélectionner un pays</option>
+                         <option value="+226">Burkina Faso (+226)</option>
+                         <option value="+258">Mozambique (+258)</option>
+                </select>
+
+            <label for="numero">Numéro de téléphone:</label>
+            <input type="tel" id="numero" name="numero" required placeholder="Format XXXXXXXX...">
+            
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
