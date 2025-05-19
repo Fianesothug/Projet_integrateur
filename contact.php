@@ -6,10 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
     <p>koko sa djo fort fort mon gas 😂🫡😎 nn</p>
-=======
-    <p>koko sa djo fort fort mon gas 😂🫡😎</p>
->>>>>>> d2accd47b368b1099bafc16532745ffb0a5bc978
 </body>
 </html>
