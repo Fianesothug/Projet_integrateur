@@ -19,10 +19,10 @@
     <div id="Connexion" class="tabcontent">
         <h2>Connexion</h2>
         <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="code">Code:</label>
-            <input type="password" id="code" name="code" required>
+            <label for="identifiant">identifiant:</label>
+            <input type="text" id="identifiant" name="identifiant" required>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
             <input type="submit" name="connexion" value="Se connecter">
         </form>
     </div>
@@ -30,10 +30,27 @@
     <div id="Inscription" class="tabcontent">
         <h2>Inscription</h2>
         <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" required>
+            
+            <label for="prenom">Prenom:</label>
+            <input type="text" id="prenom" name="prenom" required>
+
+             <label for="numero">Numero de telephone:</label>
+            <input type="text" id="numero" name="numero" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="adresse">Adresse:</label>
+            <input type="text" id="adresse" name="adresse" required>
+
+            <label for="prenom">Identifiant:</label>
+            <input type="text" id="identifiant" name="identifiant" required>
+
             <label for="code">Code:</label>
             <input type="password" id="code" name="code" required>
+
             <input type="submit" name="inscription" value="S'inscrire">
         </form>
     </div>
