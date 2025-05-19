@@ -18,7 +18,7 @@
     <!-- Contenu des onglets -->
     <div id="Connexion" class="tabcontent">
         <h2>Connexion</h2>
-        <form method="POST">
+        <form method="POST" action="connexion.php">
             <label for="identifiant">identifiant:</label>
             <input type="text" id="identifiant" name="identifiant" required>
             <label for="password">Mot de passe :</label>
