@@ -1,44 +1,24 @@
- <div class="wrapper">
-   <div class="wrapper_container">
-     <div class="box image1-box"></div> <!-- Ajoute image-box ici -->
-   </div>
+<!-- login.php -->
+<?php include_once './includes/header.php'; ?>
+<link rel="stylesheet" href="<?= $baseURL ?>/assets/css/style.css">
+<div class="card_container">
+  <div class="card">
+    <h2>Connexion</h2>
+
+    <!-- FORMULAIRE -->
+    <form class="form" action="traitement-login.php" method="POST">
+      <input type="email" name="email" placeholder="Adresse e-mail" class="email" required>
+      <input type="password" name="password" placeholder="Mot de passe" class="pass" required>
 
 
-   <!-- Grid partie-->
-   <div class="row">
+      <!-- BOUTON LOGIN -->
+      <button type="submit" class="login_btn">Se connecter</button>
+    </form>
 
-     <div class="span1"></div>
-     <div class="span2"></div>
-     <div class="span3"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
-     <div class="box"></div>
+    <!-- LIEN VERS INSCRIPTION -->
+    <p class="fp">Pas encore de compte ? <a href="register.php"><span class="inscri">Inscrivez-vous</span></a></p>
+  </div>
 
 
-   </div>
- </div>
-
-
-
- <!-- login.php -->
- <?php include_once './includes/header.php'; ?>
- <link rel="stylesheet" href="<?= $baseURL ?>/assets/css/style.css">
- <main class="login-section">
-   <h1>Connexion</h1>
-   <form action="traitement-login.php" method="POST" class="login-form">
-     <label for="email">Email</label>
-     <input type="email" id="email" name="email" required>
-
-     <label for="password">Mot de passe</label>
-     <input type="password" id="password" name="password" required>
-
-     <button type="submit">Se connecter</button>
-     <p>Pas encore de compte ? <a href="register.php">Inscrivez-vous</a></p>
-   </form>
- </main>
+</div>
+<?php include_once 'includes/footer.php'; ?>
