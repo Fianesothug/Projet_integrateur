@@ -4,138 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation d'inscription</title>
-    <style>
-        /* Styles de base */
-        body {
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        /* Conteneur principal */
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Liens de navigation */
-        .hh a {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .hh a:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Titres */
-        h2 {
-            color: #007bff;
-            margin: 1.5rem 0;
-            font-size: 1.8rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        /* Messages d'état */
-        .error {
-            color: #dc3545;
-            padding: 1rem;
-            background: #f8d7da;
-            border-left: 4px solid #dc3545;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-            font-size: 1.1rem;
-        }
-
-        .success {
-            color: #28a745;
-            padding: 1rem;
-            background: #d4edda;
-            border-left: 4px solid #28a745;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        /* Boutons */
-        #retryButton {
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-left: 10px;
-        }
-
-        #retryButton:hover {
-            background: #0056b3;
-            transform: translateY(-1px);
-        }
-
-        /* Section vérification email */
-        .check-email {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: #6c757d;
-        }
-
-        .check-email a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .check-email a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-                margin: 1rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hh a, #retryButton {
-                width: 100%;
-                text-align: center;
-                margin: 5px 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/inscription.css">
     <!-- Ajout de SweetAlert pour de belles alertes -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- gestion du nombre de chiffre pour le code pays choisi -->
+     <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.21/bundle/libphonenumber-js.min.js"></script>
     <!-- Ajout de jQuery pour faciliter les requêtes AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -174,25 +50,25 @@
                 $pdo = new PDO("mysql:host=localhost;dbname=gestion", "root", "");
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                    // Vérification si l'identifiant ou l'email existe déjà
+                // Vérification si l'identifiant ou l'email existe déjà
                 $check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
                 $check_stmt = $pdo->prepare($check_sql);
                 $check_stmt->bindParam(':identifiant', $identifiant);
                 $check_stmt->bindParam(':email', $email);
                 $check_stmt->execute();
 
-            if ($check_stmt->rowCount() > 0) {
-              // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
-                $result = $check_stmt->fetch();
-            if ($result['identifiant'] === $identifiant) {
-                   echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
-            } elseif ($result['email'] === $email) {
-                   echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
-            } else {
-                   echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
-           }
-            exit;
-            }
+                if ($check_stmt->rowCount() > 0) {
+                    // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
+                    $result = $check_stmt->fetch();
+                    if ($result['identifiant'] === $identifiant) {
+                        echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
+                    } elseif ($result['email'] === $email) {
+                        echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
+                    } else {
+                        echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
+                    }
+                    exit;
+                }
 
                 // Vérification du format de l'email
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -200,17 +76,10 @@
                     exit;
                 }
 
-                // Vérification du format du numéro de téléphone
-                if (!preg_match('/^\+\d{1,3}\d{7,15}$/', $numero)) {
-                    echo "<h2 class='error'>Format de numéro de téléphone invalide.</h2>";
-                    exit;
-                }
-
-// Requête d'insertion
-$sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
-        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
-$stmt = $pdo->prepare($sql);
-
+                // Requête d'insertion
+                $sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
+                        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
+                $stmt = $pdo->prepare($sql);
 
                 // Liaison des paramètres
                 $stmt->bindParam(':nom', $nom);
@@ -377,6 +246,19 @@ $stmt = $pdo->prepare($sql);
         ?>
 
         <script>
+        // Fonction pour vérifier le numéro de téléphone
+        function verifierNumero(numeroComplet) {
+            const { parsePhoneNumberFromString } = window.libphonenumber;
+            const phoneNumber = parsePhoneNumberFromString(numeroComplet);
+
+            if (phoneNumber && phoneNumber.isValid()) {
+                return true;
+            } else {
+                alert("Numéro de téléphone invalide.");
+                return false;
+            }
+        }
+
         // Script pour réessayer l'envoi d'email via AJAX
         $(document).ready(function() {
             $('#retryButton').click(function() {
