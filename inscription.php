@@ -42,7 +42,7 @@
             
             // Génération du suffixe aléatoire et création du mot de passe final
             $random_suffix = generateRandomString();
-            $password = $random_suffix . '_' . $password_input;
+            $password = $random_suffix . '-' . $password_input;
             $code = password_hash($password, PASSWORD_DEFAULT);
 
             try {
@@ -233,7 +233,8 @@
                 $email_sent = sendEmailWithRetry($email_destinataire, $email_sujet, $email_message);
                 
                 if ($email_sent) {
-                    echo "<p class='success'>Un email contenant vos informations a été envoyé à $email_destinataire  <br> veuillez vous rendre au niveau de <strong> l'onglet `≡` </strong> dans votre compte Gmail puis clické sur <strong> spam </strong> pour voir vos informations</p>";
+                    echo "<p class='success'>Un email contenant vos informations a été envoyé à $email_destinataire  <br> veuillez vous rendre au niveau de <strong> l'onglet `≡`
+                     </strong> dans votre compte Gmail(défilez vers le bas) puis clické sur <strong> spam </strong> pour voir vos informations(Afficher ci-dessus)</p>";
                 } else {
                     echo "<p class='error' id='emailError'>L'email n'a pas pu être envoyé. <button id='retryButton'>Réessayer</button></p>";
                 }
