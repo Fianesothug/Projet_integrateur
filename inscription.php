@@ -234,7 +234,7 @@
                 
                 if ($email_sent) {
                     echo "<p class='success'>Un email contenant vos informations a été envoyé à $email_destinataire  <br> veuillez vous rendre au niveau de <strong> l'onglet `≡`
-                     </strong> dans votre compte Gmail(défilez vers le bas) puis clické sur <strong> spam </strong> pour voir vos informations(Afficher ci-dessus)</p>";
+                     </strong> dans votre compte Gmail (défilez vers le bas) puis clické sur <strong> spam </strong> pour voir vos informations (Afficher ci-dessus)</p>";
                 } else {
                     echo "<p class='error' id='emailError'>L'email n'a pas pu être envoyé. <button id='retryButton'>Réessayer</button></p>";
                 }
