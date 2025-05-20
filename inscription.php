@@ -7,7 +7,7 @@
     <style>
         /* Styles de base */
         body {
-            text-align:center;
+            text-align: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
@@ -30,7 +30,7 @@
         .hh a {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #8B0000;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 6px;
@@ -41,14 +41,14 @@
         }
 
         .hh a:hover {
-            background-color: #a52a2a;
+            background-color: #0056b3;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* Titres */
         h2 {
-            color: #8B0000;
+            color: #007bff;
             margin: 1.5rem 0;
             font-size: 1.8rem;
             font-weight: 600;
@@ -74,13 +74,13 @@
             margin: 1.5rem 0;
             border-radius: 4px;
             font-size: 1.1rem;
-            text-align:center;
+            text-align: center;
         }
 
         /* Boutons */
         #retryButton {
             padding: 10px 20px;
-            background: #8B0000;
+            background: #007bff;
             color: white;
             border: none;
             border-radius: 6px;
@@ -91,7 +91,7 @@
         }
 
         #retryButton:hover {
-            background: #a52a2a;
+            background: #0056b3;
             transform: translateY(-1px);
         }
 
@@ -103,7 +103,7 @@
         }
 
         .check-email a {
-            color: #8B0000;
+            color: #007bff;
             text-decoration: none;
             font-weight: 500;
         }
@@ -139,7 +139,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="hh"><a href="login.PHP">Retour</a></h1>
+        <h1 class="hh"><a href="login.php">Retour</a></h1>
 
         <?php
         // Fonction pour générer une chaîne aléatoire
@@ -147,7 +147,7 @@
             $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
             $randomString = '';
             for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, strlen($characters) )- 1];
+                $randomString .= $characters[rand(0, strlen($characters)) - 1];
             }
             return $randomString;
         }
@@ -174,21 +174,31 @@
                 $pdo = new PDO("mysql:host=localhost;dbname=gestion", "root", "");
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                // Vérification si l'identifiant existe déjà (sans vérification d'email)
-                $check_sql = "SELECT * FROM client WHERE identifiant = :identifiant";
-                $check_stmt = $pdo->prepare($check_sql);
-                $check_stmt->bindParam(':identifiant', $identifiant);
-                $check_stmt->execute();
+                    // Vérification si l'identifiant ou l'email existe déjà
+$check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
+$check_stmt = $pdo->prepare($check_sql);
+$check_stmt->bindParam(':identifiant', $identifiant);
+$check_stmt->bindParam(':email', $email);
+$check_stmt->execute();
 
-                if ($check_stmt->rowCount() > 0) {
-                    echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
-                    exit;
-                }
+if ($check_stmt->rowCount() > 0) {
+    // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
+    $result = $check_stmt->fetch();
+    if ($result['identifiant'] === $identifiant) {
+        echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
+    } elseif ($result['email'] === $email) {
+        echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
+    } else {
+        echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
+    }
+    exit;
+}
 
-                // Requête d'insertion
-                $sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
-                        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
-                $stmt = $pdo->prepare($sql);
+// Requête d'insertion
+$sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
+        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
+$stmt = $pdo->prepare($sql);
+
 
                 // Liaison des paramètres
                 $stmt->bindParam(':nom', $nom);
@@ -226,11 +236,32 @@
             <head>
                 <title>Vos informations d'inscription</title>
                 <style>
-                    body { font-family: Arial, sans-serif; line-height: 1.6; }
-                    .container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
-                    .header { background-color: #8B0000; color: white; padding: 10px; text-align: center; border-radius: 5px 5px 0 0; }
-                    .content { padding: 20px; }
-                    .footer { margin-top: 20px; font-size: 0.8em; text-align: center; color: #777; }
+                    body {
+                     font-family: Arial, sans-serif;
+                      line-height: 1.6;
+                      }
+                    .container { 
+                       color: black;
+                       max-width: 600px;
+                       margin: 0 auto; padding: 20px;
+                      border: 1px solid #ddd; 
+                      border-radius: 5px;
+                       }
+                    .header { 
+                    background-color: #007bff;
+                     color: white; padding: 10px; 
+                     text-align: center; 
+                     border-radius: 5px 5px 0 0; 
+                     }
+                    .content {
+                       padding: 20px; 
+                      }
+                    .footer {
+                     margin-top: 20px;
+                      font-size: 0.8em; 
+                      text-align: center;
+                       color: #777; 
+                       }
                 </style>
             </head>
             <body>
@@ -332,8 +363,6 @@
             echo "<h2 class='error'>Aucune donnée d'inscription reçue.</h2>";
         }
         ?>
-
-    
 
         <script>
         // Script pour réessayer l'envoi d'email via AJAX
