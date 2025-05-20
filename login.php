@@ -59,8 +59,7 @@
         <label for="pays">Code pays:</label>
         <select id="pays" name="pays" required>
           <option value="">Sélectionner un pays</option>
-          <option value="+226">Burkina Faso (+226)</option>
-          <option value="+258">Mozambique (+258)</option>
+        <?php include('listepays.php') ?>
         </select>
 
         <label for="numero">Numéro de téléphone:</label>
