@@ -184,8 +184,8 @@
                         $mail->isSMTP();
                         $mail->Host = 'smtp.gmail.com';
                         $mail->SMTPAuth = true;
-                        $mail->Username = 'ckprod7295@gmail.com';
-                        $mail->Password = 'dxclrvkugoqiqdly';
+                        $mail->Username = 'decidaisomar@gmail.com';
+                        $mail->Password = 'dspkjjgzuahscwxp';
                         $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
                         $mail->Port = 465;
                         $mail->SMTPOptions = array(
@@ -196,7 +196,7 @@
                             )
                         );
 
-                        $mail->setFrom('ckprod7295@gmail.com', 'Service d\'inscription');
+                        $mail->setFrom('decidaisomar@gmail.com', 'Service d\'inscription');
                         $mail->addAddress($to);
                         $mail->isHTML(true);
                         $mail->Subject = $subject;
@@ -213,8 +213,8 @@
 
                 // Méthode 2: Fonction mail() native de PHP (secondaire)
                 try {
-                    $headers = "From: ckprod7295@gmail.com\r\n";
-                    $headers .= "Reply-To: ckprod7295@gmail.com\r\n";
+                    $headers = "From: decidaisomar@gmail.com\r\n";
+                    $headers .= "Reply-To: decidaisomar@gmail.com\r\n";
                     $headers .= "MIME-Version: 1.0\r\n";
                     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
@@ -332,8 +332,8 @@
                         $mail->isSMTP();
                         $mail->Host = "smtp.gmail.com";
                         $mail->SMTPAuth = true;
-                        $mail->Username = "ckprod7295@gmail.com";
-                        $mail->Password = "dxclrvkugoqiqdly";
+                        $mail->Username = "decidaisomar@gmail.com";
+                        $mail->Password = "dspkjjgzuahscwxp";
                         $mail->SMTPSecure = \PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
                         $mail->Port = 465;
                         $mail->SMTPOptions = array(
@@ -344,7 +344,7 @@
                             )
                         );
 
-                        $mail->setFrom("ckprod7295@gmail.com", "Service d\'inscription");
+                        $mail->setFrom("decidaisomar@gmail.com", "Service d\'inscription");
                         $mail->addAddress($to);
                         $mail->isHTML(true);
                         $mail->Subject = $subject;
@@ -361,8 +361,8 @@
                 }
 
                 // Si PHPMailer échoue, essayer avec la fonction mail() native
-                $headers = "From: ckprod7295@gmail.com\r\n";
-                $headers .= "Reply-To: ckprod7295@gmail.com\r\n";
+                $headers = "From: decidaisomar@gmail.com\r\n";
+                $headers .= "Reply-To: decidaisomar@gmail.com\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
