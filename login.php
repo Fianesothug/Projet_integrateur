@@ -20,15 +20,24 @@
     </div>
 
     <!-- Contenu des onglets -->
-    <div id="Connexion" class="tabcontent">
+    <div id="Connexion" class="tabcontent" >
       <h2>Connexion</h2>
-      <form method="POST" action="connexion.php">
-        <label for="identifiant_connexion" >Identifiant:</label>
-        <input type="text" id="identifiant_connexion" name="identifiant" required>
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" name="connexion" value="Se connecter">
-      </form>
+     <!-- inclusion du php de la connexion -->
+           <?php include('connexion.php') ?>
+      
+<form method="POST" action="">
+    <label for="identifiant">Identifiant:</label>
+    <input type="text" id="identifiant" name="identifiant" required>
+
+    <label for="code">Mot de passe :</label>
+    <input type="password" id="code" name="code" required>
+
+    <?php if (!empty($erreur)): ?>
+        <div class="erreur"><?php echo htmlspecialchars($erreur); ?></div>
+    <?php endif; ?>
+        <br>
+    <input type="submit" name="connexion" value="Se connecter">
+</form>
     </div>
 
     <div id="Inscription" class="tabcontent">
