@@ -175,24 +175,36 @@
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Vérification si l'identifiant ou l'email existe déjà
-$check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
-$check_stmt = $pdo->prepare($check_sql);
-$check_stmt->bindParam(':identifiant', $identifiant);
-$check_stmt->bindParam(':email', $email);
-$check_stmt->execute();
+                $check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
+                $check_stmt = $pdo->prepare($check_sql);
+                $check_stmt->bindParam(':identifiant', $identifiant);
+                $check_stmt->bindParam(':email', $email);
+                $check_stmt->execute();
 
-if ($check_stmt->rowCount() > 0) {
-    // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
-    $result = $check_stmt->fetch();
-    if ($result['identifiant'] === $identifiant) {
-        echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
-    } elseif ($result['email'] === $email) {
-        echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
-    } else {
-        echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
-    }
-    exit;
-}
+            if ($check_stmt->rowCount() > 0) {
+              // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
+                $result = $check_stmt->fetch();
+            if ($result['identifiant'] === $identifiant) {
+                   echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
+            } elseif ($result['email'] === $email) {
+                   echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
+            } else {
+                   echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
+           }
+            exit;
+            }
+
+                // Vérification du format de l'email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo "<h2 class='error'>Format d'email invalide.</h2>";
+                    exit;
+                }
+
+                // Vérification du format du numéro de téléphone
+                if (!preg_match('/^\+\d{1,3}\d{7,15}$/', $numero)) {
+                    echo "<h2 class='error'>Format de numéro de téléphone invalide.</h2>";
+                    exit;
+                }
 
 // Requête d'insertion
 $sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
