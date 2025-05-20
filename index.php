@@ -1,6 +1,6 @@
-<?php include_once 'includes/header.php'; ?>
-<link rel="stylesheet" href="<?= $baseURL ?>/assets/css/style.css">
-<link rel="stylesheet" href="<?= $baseURL ?>/assets/css/header.css">
+<?php include('includes/header.php'); ?>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/header.css">
 <main>
   <section class="accueil">
     <h1>Bienvenue sur HOUSE-COMPANY</h1>
@@ -37,4 +37,4 @@
   </div>
 </div>
 
-<?php include_once 'includes/footer.php'; ?>
+<?php include('includes/footer.php'); ?>

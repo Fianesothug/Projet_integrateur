@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-  <meta charset="UTF-8">
-  <title>HOUSE-COMPANY</title>
-  <?php $baseURL = "/Projet_integrateur"; ?>
-  <link rel="stylesheet" href="<?= $baseURL ?>/assets/css/header.css">
-
+ <link rel="stylesheet" href="assets/css/header.css">
 
 </head>
 

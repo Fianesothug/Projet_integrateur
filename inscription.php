@@ -139,7 +139,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="hh"><a href="user.PHP">Retour</a></h1>
+        <h1 class="hh"><a href="login.PHP">Retour</a></h1>
 
         <?php
         // Fonction pour générer une chaîne aléatoire
@@ -333,7 +333,7 @@
         }
         ?>
 
-        <h1 class="hh"><a href="formulaire.PHP#soumission">soumissions</a></h1>
+    
 
         <script>
         // Script pour réessayer l'envoi d'email via AJAX
