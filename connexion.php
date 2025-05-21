@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (password_verify($code, $row['code'])) {
             $_SESSION['identifiant'] = $row['identifiant'];
-            header("Location: index.php");
+             $_SESSION['email'] = $row['email']; 
+            header("Location: page_apres_connexion.php");
             exit();
         } else {
             $erreur = "Mot de passe incorrect.";
