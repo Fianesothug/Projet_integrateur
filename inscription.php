@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="hh"><a href="login.php">Retour</a></h1>
+        <h1 class="hh"><a href="login.php">CONNEXION</a></h1>
 
         <?php
         // Fonction pour générer une chaîne aléatoire
