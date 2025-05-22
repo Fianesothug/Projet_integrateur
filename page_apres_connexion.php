@@ -31,7 +31,7 @@ session_start();
             </div>
           </li>
          <?php if (!isset($_SESSION['email'])): ?>
-             <li class="nav-item"><a href="/connexion">Connexion</a></li>
+             <li class="nav-item"> <a href="login.php" class="button secondary">Se connecter/S'inscrire</a></li>
           <?php endif; ?>
         </ul>
       </nav>
