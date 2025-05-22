@@ -56,12 +56,5 @@ session_start();
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['identifiant']); ?> !</h1>
-      <p>Vous êtes maintenant connecté.</p>
-
-    </div>
-  </main>
 </body>
 </html>
