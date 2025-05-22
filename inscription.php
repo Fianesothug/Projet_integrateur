@@ -18,6 +18,10 @@
         <h1 class="hh"><a href="login.php">CONNEXION</a></h1>
 
         <?php
+        // Désactiver l'affichage des erreurs
+        error_reporting(0);
+        ini_set('display_errors', 0);
+
         // Fonction pour générer une chaîne aléatoire
         function generateRandomString($length = 4) {
             $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -45,73 +49,11 @@
             $password = $random_suffix . '-' . $password_input;
             $code = password_hash($password, PASSWORD_DEFAULT);
 
-            try {
-                // Connexion à la base de données
-                $pdo = new PDO("mysql:host=localhost;dbname=gestion", "root", "");
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                // Vérification si l'identifiant ou l'email existe déjà
-                $check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
-                $check_stmt = $pdo->prepare($check_sql);
-                $check_stmt->bindParam(':identifiant', $identifiant);
-                $check_stmt->bindParam(':email', $email);
-                $check_stmt->execute();
-
-                if ($check_stmt->rowCount() > 0) {
-                    // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
-                    $result = $check_stmt->fetch();
-                    if ($result['identifiant'] === $identifiant) {
-                        echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
-                    } elseif ($result['email'] === $email) {
-                        echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
-                    } else {
-                        echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
-                    }
-                    exit;
-                }
-
-                // Vérification du format de l'email
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    echo "<h2 class='error'>Format d'email invalide.</h2>";
-                    exit;
-                }
-
-                // Requête d'insertion
-                $sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
-                        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
-                $stmt = $pdo->prepare($sql);
-
-                // Liaison des paramètres
-                $stmt->bindParam(':nom', $nom);
-                $stmt->bindParam(':prenom', $prenom);
-                $stmt->bindParam(':sexe', $sexe);
-                $stmt->bindParam(':pays', $pays);
-                $stmt->bindParam(':numero', $numero);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':adresse', $adresse);
-                $stmt->bindParam(':identifiant', $identifiant);
-                $stmt->bindParam(':code', $code);
-
-                // Exécution de la requête
-                if ($stmt->execute()) {
-                    $civilite = ($sexe == 'masculin') ? 'Monsieur' : 'Madame';
-                    echo "<h2> $civilite :<strong>$nom $prenom</strong> <br>votre inscription a été faite avec succès 😁</h2>";
-                    echo "<h2>Votre nom d'utilisateur est : 👉 $identifiant 👈</h2>";
-                    echo "<h2>Votre mot de passe est : 👉 $password 👈</h2>";
-                    echo "<h2>Veuillez garder ces informations à l'abri <br> car elles sont inchangeables.</h2>";
-                } else {
-                    echo "<h2 class='error'>Échec de l'inscription.</h2>";
-                    exit;
-                }
-            } catch (PDOException $e) {
-                echo "<h2 class='error'>Erreur : " . htmlspecialchars($e->getMessage()) . "</h2>";
-                exit;
-            }
-
             // Configuration de l'email
             $email_destinataire = $email;
             $email_sujet = "Vos informations d'inscription";
 
+            $civilite = ($sexe == 'masculin') ? 'Monsieur' : 'Madame';
             $email_message = "
             <html>
             <head>
@@ -207,6 +149,7 @@
                             return true;
                         }
                     } catch (Exception $e) {
+                        // On log l'erreur mais on ne l'affiche pas
                         error_log("PHPMailer Error: " . $e->getMessage());
                     }
                 }
@@ -218,10 +161,11 @@
                     $headers .= "MIME-Version: 1.0\r\n";
                     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-                    if (mail($to, $subject, $message, $headers)) {
+                    if (@mail($to, $subject, $message, $headers)) {
                         return true;
                     }
                 } catch (Exception $e) {
+                    // On log l'erreur mais on ne l'affiche pas
                     error_log("mail() Error: " . $e->getMessage());
                 }
 
@@ -229,17 +173,83 @@
             }
 
             // Vérification et envoi de l'email
+            $email_sent = false;
             if (filter_var($email_destinataire, FILTER_VALIDATE_EMAIL)) {
                 $email_sent = sendEmailWithRetry($email_destinataire, $email_sujet, $email_message);
-                
-                if ($email_sent) {
+            } else {
+                echo "<h2 class='error'>L'adresse email fournie n'est pas valide.</h2>";
+                exit;
+            }
+
+            // Si l'email n'a pas été envoyé, on ne procède pas à l'insertion dans la base
+            if (!$email_sent) {
+                echo "<h2 class='error'>Le système d'envoi d'emails est temporairement indisponible. Veuillez réessayer plus tard ou contacter l'administrateur.</h2>";
+                exit;
+            }
+
+            // Si l'email a été envoyé, on procède à l'insertion dans la base
+            try {
+                // Connexion à la base de données
+                $pdo = new PDO("mysql:host=localhost;dbname=gestion", "root", "");
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                // Vérification si l'identifiant ou l'email existe déjà
+                $check_sql = "SELECT * FROM client WHERE identifiant = :identifiant OR email = :email";
+                $check_stmt = $pdo->prepare($check_sql);
+                $check_stmt->bindParam(':identifiant', $identifiant);
+                $check_stmt->bindParam(':email', $email);
+                $check_stmt->execute();
+
+                if ($check_stmt->rowCount() > 0) {
+                    // Vérifier lequel des deux est déjà utilisé (identifiant ou email)
+                    $result = $check_stmt->fetch();
+                    if ($result['identifiant'] === $identifiant) {
+                        echo "<h2 class='error'>Cet identifiant est déjà utilisé.</h2>";
+                    } elseif ($result['email'] === $email) {
+                        echo "<h2 class='error'>Cet email est déjà utilisé.</h2>";
+                    } else {
+                        echo "<h2 class='error'>Identifiant ou email déjà utilisé.</h2>";
+                    }
+                    exit;
+                }
+
+                // Vérification du format de l'email
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo "<h2 class='error'>Format d'email invalide.</h2>";
+                    exit;
+                }
+
+                // Requête d'insertion
+                $sql = "INSERT INTO client (nom, prenom, sexe, pays, numero, email, adresse, identifiant, code) 
+                        VALUES (:nom, :prenom, :sexe, :pays, :numero, :email, :adresse, :identifiant, :code)";
+                $stmt = $pdo->prepare($sql);
+
+                // Liaison des paramètres
+                $stmt->bindParam(':nom', $nom);
+                $stmt->bindParam(':prenom', $prenom);
+                $stmt->bindParam(':sexe', $sexe);
+                $stmt->bindParam(':pays', $pays);
+                $stmt->bindParam(':numero', $numero);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':adresse', $adresse);
+                $stmt->bindParam(':identifiant', $identifiant);
+                $stmt->bindParam(':code', $code);
+
+                // Exécution de la requête
+                if ($stmt->execute()) {
+                    echo "<h2> $civilite :<strong>$nom $prenom</strong> <br>votre inscription a été faite avec succès 😁</h2>";
+                    echo "<h2>Votre nom d'utilisateur est : 👉 $identifiant 👈</h2>";
+                    echo "<h2>Votre mot de passe est : 👉 $password 👈</h2>";
+                    echo "<h2>Veuillez garder ces informations à l'abri <br> car elles sont inchangeables.</h2>";
                     echo "<p class='success'>Un email contenant vos informations a été envoyé à $email_destinataire  <br> veuillez vous rendre au niveau de <strong> l'onglet `≡`
                      </strong> dans votre compte Gmail (défilez vers le bas) puis clické sur <strong> spam </strong> pour voir vos informations (Afficher ci-dessus)</p>";
                 } else {
-                    echo "<p class='error' id='emailError'>L'email n'a pas pu être envoyé. <button id='retryButton'>Réessayer</button></p>";
+                    echo "<h2 class='error'>Échec de l'inscription.</h2>";
+                    exit;
                 }
-            } else {
-                echo "<p class='error'>L'adresse email fournie n'est pas valide.</p>";
+            } catch (PDOException $e) {
+                echo "<h2 class='error'>Une erreur est survenue lors de l'inscription. Veuillez réessayer.</h2>";
+                exit;
             }
         } else {
             echo "<h2 class='error'>Aucune donnée d'inscription reçue.</h2>";
@@ -307,6 +317,9 @@
         if (!file_exists('resend_email.php')) {
             $resend_email_code = '<?php
             header("Content-Type: application/json");
+            // Désactiver l\'affichage des erreurs
+            error_reporting(0);
+            ini_set(\'display_errors\', 0);
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $to = $_POST["email"] ?? "";
@@ -367,10 +380,10 @@
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-                if (mail($to, $subject, $message, $headers)) {
+                if (@mail($to, $subject, $message, $headers)) {
                     echo json_encode(["success" => true, "message" => "Email envoyé avec la méthode alternative"]);
                 } else {
-                    echo json_encode(["success" => false, "message" => "Échec de l\'envoi de l\'email"]);
+                    echo json_encode(["success" => false, "message" => "Le système d\'envoi d\'emails est temporairement indisponible. Veuillez réessayer plus tard."]);
                 }
             } else {
                 echo json_encode(["success" => false, "message" => "Méthode non autorisée"]);
