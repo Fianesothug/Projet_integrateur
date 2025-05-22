@@ -1,160 +1,255 @@
-# 🏠 Projet Intégrateur - Plateforme de Gestion Immobilière
-
-Ce projet est une application web de gestion immobilière développée en **PHP**, **HTML**, **CSS**, et **JavaScript**. Il permet à différents types d’utilisateurs (clients, bailleurs, employés) d’interagir avec des annonces immobilières, de gérer des biens, des rendez-vous, et plus encore.
-
----
-
-## 🚀 Fonctionnalités principales
-
-- 🔐 Authentification par rôle (client, bailleur, employé)
-- 🏠 Liste des propriétés avec affichage dynamique
-- ❤️ Ajout de propriétés en favoris
-- 📅 Prise de rendez-vous
-- 🧑‍💼 Tableau de bord personnalisé par type d’utilisateur
-- 📊 Gestion des statistiques pour les employés
-- 📩 Page de contact
-
----
-
-## 🗂️ Arborescence du projet
 
 
----
-
-## 🛠️ Installation locale
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/Fianesothug/Projet_integrateur.git
-" lancer le serveur avec "
-http://localhost/Projet_integrateur/
-
-| Rôle         | Accès                                                |
-| ------------ | ---------------------------------------------------- |
-| **Client**   | Parcourir, ajouter aux favoris, rendez-vous          |
-| **Bailleur** | Ajouter/modifier ses propriétés, voir ses biens      |
-| **Employé**  | Gérer les clients, propriétés, voir les statistiques |
 
 
-Voici un fichier `README.md` clair et complet pour ton projet **Projet\_integrateur**, que tu peux directement copier dans la racine de ton dépôt :
+________________________________________
+🎯 OBJECTIF DU FRONT-END
+Créer une interface responsive, conviviale et claire pour chaque type d’utilisateur (client, bailleur, agent, manager), tout en permettant aux visiteurs non connectés de consulter les propriétés.
+________________________________________
+🧱 1. STRUCTURE GÉNÉRALE (HTML + CSS + JS)
+Projet_integrateur/
+│
+├── index.php               ← Page d'accueil (publique)
+├── login.php               ← Connexion (client/bailleur/agent/manager)
+├── register.php            ← Inscription (client ou bailleur)
+├── propriete.php           ← Détail d’une propriété
+├── favoris.php             ← Liste des favoris d’un client
+├── rendezvous.php          ← Prise de rendez-vous
+│
+├── includes/
+│   ├── header.php          ← En-tête (logo + titre site)
+│   ├── navbar.php          ← Menu de navigation dynamique selon utilisateur
+│   └── footer.php          ← Pied de page (contact, infos, liens)
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css       ← Styles principaux
+│   │   ├── header.css      ← Spécifique à l’en-tête
+│   │   ├── footer.css      ← Pied de page
+│   │   └── responsive.css  ← Responsive design
+│   ├── js/
+│   │   ├── script.js       ← Comportement général (menu mobile, etc.)
+│   │   └── rendezvous.js   ← JS pour le formulaire de rdv
+│   └── images/
+│       ├── bannieres/      ← Image d’accueil
+│       └── proprietes/     ← Photos des biens
+│
+├── components/
+│   ├── carte-propriete.php     ← Carte HTML d’une propriété
+│   └── formulaire-inscription.php ← Formulaire de base (utilisé par register.php)
+________________________________________
+🔗 2. LIENS ENTRE LES FICHIERS (navigation + inclusion)
+🌐 Pages publiques
+Fichier	Liens et interactions
+index.php	- Affiche les propriétés disponibles (via components/carte-propriete.php)- Lien vers propriete.php?id=X- Barre de navigation (includes/navbar.php)
+login.php	Formulaire avec action vers le back-end (traitement/login.php)Redirige vers le tableau de bord selon le rôle
+register.php	Inclut components/formulaire-inscription.phpPeut inclure un ?role=client ou ?role=bailleur dans l’URL
+________________________________________
+🧑‍💼 Espace Client
+Fichier	Liens
+client/tableau-bord.php	Liens vers favoris.php, rendezvous.php, profil.php
+favoris.php	Affiche les propriétés aimées avec option "Retirer des favoris"
+rendezvous.php	Formulaire de demande de rdv pour une propriété
+client/profil.php	Affiche/édite les infos du client
+________________________________________
+🏠 Espace BAILLEUR
+Fichier	Liens
+bailleur/tableau-bord.php	Liens vers ajout-propriete.php, mes-biens.php
+ajout-propriete.php	Formulaire avec champ image et infos du bien
+mes-biens.php	Tableau des biens + boutons "Modifier", "Supprimer"
+________________________________________
+🧑‍💼 Espace EMPLOYÉ - Agent
+Fichier	Liens
+employe/tableau-bord.php	Liens vers ajout-propriete.php, clients affectés
+employe/ajout-propriete.php	Identique au bailleur
+gestion-clients.php	Voir clients affectés, les rendez-vous
+________________________________________
+👨‍💼 Espace EMPLOYÉ - Manager
+Fichier	Liens
+employe/manager/tableau-bord.php	Liens vers tous les autres fichiers du manager
+gestion-utilisateurs.php	CRUD sur clients, bailleurs, agents
+affectations.php	Lister clients non affectés, les affecter
+statistiques.php	Graphiques statistiques
+________________________________________
+🧩 3. COMPOSANTS À INCLURE
+includes/header.php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Agence Immobilière</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <?php include 'navbar.php'; ?>
+includes/navbar.php
+Menu dynamique :
+<nav>
+  <ul>
+    <li><a href="index.php">Accueil</a></li>
+    <?php if (!isset($_SESSION['role'])): ?>
+      <li><a href="login.php">Connexion</a></li>
+      <li><a href="register.php">Inscription</a></li>
+    <?php elseif ($_SESSION['role'] === 'client'): ?>
+      <li><a href="/client/tableau-bord.php">Mon espace</a></li>
+      <li><a href="favoris.php">Favoris</a></li>
+    <?php elseif ($_SESSION['role'] === 'bailleur'): ?>
+      <li><a href="/bailleur/mes-biens.php">Mes biens</a></li>
+    <?php elseif ($_SESSION['role'] === 'manager'): ?>
+      <li><a href="/employe/manager/tableau-bord.php">Manager</a></li>
+    <?php endif; ?>
+  </ul>
+</nav>
+includes/footer.php
+<footer>
+  <p>&copy; 2025 - Agence Immobilière</p>
+</footer>
+</body>
+</html>
+________________________________________
+📋 4. EXEMPLES DE LIENS HTML
+•	Lien vers les détails d’une propriété :
+<a href="propriete.php?id=12">Voir détails</a>
+•	Lien vers la modification d’un bien :
+<a href="bailleur/modifier-propriete.php?id=12">Modifier</a>
+•	Soumission formulaire :
+<form action="traitement/ajout-propriete.php" method="POST" enctype="multipart/form-data">
+________________________________________
+📜 5. ROUTAGE BASIQUE EN PHP
+Dans chaque page sensible :
+include 'includes/auth-client.php'; // ou auth-bailleur.php
+________________________________________
+✅ Résumé des liens entre parties
+Page/Composant	Inclut / Lié à
+index.php	navbar.php, carte-propriete.php, footer.php
+login.php	Formulaire de login → vérification PHP
+register.php	formulaire-inscription.php
+propriete.php	Affiche un bien spécifique + bouton rdv ou favoris
+navbar.php	Liens dynamiques selon $_SESSION['role']
+footer.php	Présent sur toutes les pages
+script.js	Menu mobile, interactions JS
+________________________________________
 
----
 
-```markdown
-# 🏠 Projet Intégrateur - Plateforme de Gestion Immobilière
 
-Ce projet est une application web de gestion immobilière développée en **PHP**, **HTML**, **CSS**, et **JavaScript**. Il permet à différents types d’utilisateurs (clients, bailleurs, employés) d’interagir avec des annonces immobilières, de gérer des biens, des rendez-vous, et plus encore.
+________________________________________
+🎯 Objectif : Un back-end sécurisé, modulaire, logique et évolutif
+Le back-end dans ton cas se fait avec PHP + MySQL. Il sert à :
+•	gérer la base de données,
+•	assurer la sécurité (authentification, rôles, sessions),
+•	faire communiquer les pages dynamiquement,
+•	exécuter les actions métiers (ajout de propriété, rendez-vous, etc.).
+________________________________________
+📁 STRUCTURE BACK-END CONSEILLÉE (selon ton arborescence)
+________________________________________
+🔧 1. includes/ (fonctions partagées)
+•	db.php ← Connexion PDO à la base
+•	auth.php ← Fonctions de connexion/déconnexion
+•	auth-client.php, auth-bailleur.php, auth-agent.php, auth-manager.php ← Vérification des rôles
+•	functions.php ← Fonctions utilitaires (affichage, redirections, etc.)
+🔧 2. sql/
+•	structure.sql ← Fichier pour créer la base (tables, index, relations)
+•	dummy-data.sql ← Données de test
+________________________________________
+🔐 2. AUTHENTIFICATION & SÉCURITÉ
+🔸 a) Gestion des rôles :
+Dans la table utilisateurs (ou séparée), il faut un champ role : client, bailleur, agent, manager
+🔸 b) Login (login.php)
+•	Vérifie les identifiants (email + mot de passe)
+•	Vérifie le rôle
+•	Démarre la session avec :
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['role'] = $user['role'];
+•	Redirige vers le bon tableau de bord selon le rôle
+🔸 c) Middleware de sécurité
+Exemple pour un fichier auth-client.php :
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'client') {
+  header('Location: ../login.php');
+  exit();
+}
+________________________________________
+🧩 3. MODULES FONCTIONNELS
+🟦 A. MODULE CLIENT
+•	register.php : insertion en base avec vérification des champs
+•	favoris.php : ajout/suppression via table favoris (avec AJAX possible)
+•	rendezvous.php : formulaire lié à une propriété (enregistre dans rendezvous)
+•	client/tableau-bord.php : liste des rendez-vous, favoris, infos perso
+________________________________________
+🟨 B. MODULE BAILLEUR
+•	register.php (ou spécifique) : identique à client, mais rôle différent
+•	bailleur/ajout-propriete.php :
+o	Formulaire d’ajout
+o	Upload des images
+o	Insertion dans proprietes + images
+•	bailleur/mes-biens.php : affichage et édition des propriétés par le bailleur
+•	Sécurité : ne voir que ses propres propriétés
+________________________________________
+🟧 C. MODULE EMPLOYE - AGENT
+•	employe/ajout-propriete.php : même logique que bailleur
+•	employe/tableau-bord.php :
+o	voir ses clients affectés
+o	voir les rdv clients
+o	tableau des actions à faire
+________________________________________
+🟥 D. MODULE EMPLOYE - MANAGER
+•	employe/manager/gestion-utilisateurs.php :
+o	CRUD sur les utilisateurs (ajouter, modifier, supprimer client, bailleur, agent)
+•	employe/manager/affectations.php :
+o	liste des clients non affectés
+o	assignation à un agent
+•	employe/manager/statistiques.php :
+o	Requêtes SQL (COUNT, GROUP BY, etc.) + affichage avec Chart.js
+________________________________________
+🗃 4. BASE DE DONNÉES RECOMMANDÉE
+✅ Tables essentielles :
+utilisateurs (id, nom, email, mot_de_passe, role)
+proprietes (id, titre, type, usage, prix, localisation, bailleur_id, statut)
+images (id, propriete_id, chemin)
+favoris (id, client_id, propriete_id)
+rendezvous (id, client_id, propriete_id, date, statut)
+affectations (id, agent_id, client_id)
+👉 Utilise clés étrangères + index pour optimiser les relations
+________________________________________
+📨 5. TRAITEMENT DES FORMULAIRES
+Exemple d’ajout de propriété :
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titre = $_POST['titre'];
+    $type = $_POST['type'];
+    $prix = $_POST['prix'];
+    $bailleur_id = $_SESSION['user_id'];
 
----
+    $stmt = $pdo->prepare("INSERT INTO proprietes (titre, type, prix, bailleur_id) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$titre, $type, $prix, $bailleur_id]);
+}
+________________________________________
+📦 6. GESTION DES UPLOADS
+Pour les photos des propriétés :
+•	Créer un dossier uploads/proprietes/
+•	Stocker les noms de fichiers dans la table images
+•	Protéger les extensions / poids / MIME
+________________________________________
+📈 7. STATISTIQUES POUR LE MANAGER
+Exemples de requêtes :
+-- Nb de clients
+SELECT COUNT(*) FROM utilisateurs WHERE role = 'client';
 
-## 🚀 Fonctionnalités principales
+-- Nb de propriétés par type
+SELECT type, COUNT(*) FROM proprietes GROUP BY type;
 
-- 🔐 Authentification par rôle (client, bailleur, employé)
-- 🏠 Liste des propriétés avec affichage dynamique
-- ❤️ Ajout de propriétés en favoris
-- 📅 Prise de rendez-vous
-- 🧑‍💼 Tableau de bord personnalisé par type d’utilisateur
-- 📊 Gestion des statistiques pour les employés
-- 📩 Page de contact
+-- Rdv confirmés
+SELECT COUNT(*) FROM rendezvous WHERE statut = 'confirmé';
+________________________________________
+✅ Résumé : To-do Back-End
+Action	Fait ?
+Connexion à la base (PDO)	❌
+Authentification et gestion des rôles	❌
+Sécurité via middlewares	❌
+Gestion des propriétés (CRUD)	⏳
+Favoris et rendez-vous	⏳
+Affectation clients/agents	❌
+Statistiques Manager	❌
+Traitement des formulaires + upload fichiers	❌
 
----
 
-## 🗂️ Arborescence du projet
-
-```
-
-Projet\_integrateur/
-├── assets/              # Fichiers CSS, JS, images
-├── bailleur/            # Pages pour les bailleurs
-├── client/              # Pages pour les clients
-├── employe/             # Pages pour les employés
-├── includes/            # Header, footer, navbar
-├── components/          # Composants PHP réutilisables
-├── index.php            # Page d’accueil
-├── login.php            # Page de connexion
-├── register.php         # Page d’inscription
-├── favoris.php          # Liste des favoris
-├── propriete.php        # Détails d’une propriété
-├── rendezvous.php       # Prise de rendez-vous
-└── contact.php          # Page de contact
-
-````
-
----
-
-## 🛠️ Installation locale
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/Fianesothug/Projet_integrateur.git
-````
-
-2. Placez le dossier dans le répertoire de votre serveur local (`www` pour WAMP, `htdocs` pour XAMPP).
-
-3. Lancez votre serveur et ouvrez dans votre navigateur :
-
-   ```
-   http://localhost/Projet_integrateur/
-   ```
-
-4. (Optionnel) Configurez la base de données et modifiez les identifiants dans vos fichiers PHP.
-
----
-
-## 👨‍💻 Utilisateurs & rôles
-
-| Rôle         | Accès                                                |
-| ------------ | ---------------------------------------------------- |
-| **Client**   | Parcourir, ajouter aux favoris, rendez-vous          |
-| **Bailleur** | Ajouter/modifier ses propriétés, voir ses biens      |
-| **Employé**  | Gérer les clients, propriétés, voir les statistiques |
-
----
-
-## 📦 À venir
-
-* 🔐 Connexion sécurisée (hash des mots de passe)
-* 📧 Notifications par mail
-* 📁 Téléversement d’images dynamiques pour les propriétés
-* 🔎 Recherche et filtres avancés des annonces
-
----
-
-## 🤝 Collaboration
-
-Pour contribuer :
-
-1. Fork le projet ou clone-le avec `git clone`
-2. Crée une branche : `git checkout -b feature/ma-fonction`
-3. Commit tes modifications : `git commit -m "Ajout d'une fonctionnalité"`
-4. Push ta branche : `git push origin feature/ma-fonction`
-5. Crée une **Pull Request** sur GitHub
-
----
-
-## 📄 Licence
-
-Ce projet est sous licence MIT – vous pouvez l’utiliser, le modifier, et le partager librement.
-
----
-
-Développé avec ❤️ par Fianesothug en collaboration avec lebossboss
-
-````
-
----
-
-### 📌 Étapes pour l’ajouter à ton dépôt
-
-Dans ton terminal :
-
-```bash
-# À la racine de ton projet
-echo "TON_CONTENU_README_ICI" > README.md
-
-# Ou ouvre ton éditeur et colle le contenu
-
-git add README.md
-git commit -m "Ajout du README.md"
-git push
-````

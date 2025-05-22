@@ -1,5 +1,4 @@
-
- <link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/header.css">
 
 </head>
 
@@ -21,16 +20,20 @@
               <a href="/villas">Villas</a>
               <a href="/terrains">Terrains</a>
               <a href="/locaux-commerciaux">Locaux Commerciaux</a>
+              <a href="/locaux-commerciaux">Magasin</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Fermes</a>
             </div>
           </li>
-          <li class="nav-item"><a href="/connexion">Connexion</a></li>
+          <li class="nav-item"><a href="contact.php">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
         <div class="quick-actions">
-          <a href="/inscription" class="button secondary">Inscription</a>
-          <a href="/deposer-annonce" class="button primary">Déposer une annonce</a>
+          <a href="login.php" class="button secondary">Se connecter/S'inscrire</a>
+          <a href="deposer-annonce" class="button primary">Déposer une annonce</a>
         </div>
         <form class="search-form" action="/recherche" method="get">
           <input type="search" name="q" placeholder="Rechercher..." aria-label="Recherche">
@@ -41,4 +44,3 @@
       </div>
     </div>
   </header>
- 
