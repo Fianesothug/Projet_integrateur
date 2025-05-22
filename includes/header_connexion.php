@@ -1,13 +1,11 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Page après connexion</title>
-  <link rel="stylesheet" href="assets/css/header.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/Projet_integrateur/assets/css/header.css">
 </head>
 
 <body>
@@ -28,23 +26,19 @@ session_start();
               <a href="/villas">Villas</a>
               <a href="/terrains">Terrains</a>
               <a href="/locaux-commerciaux">Locaux Commerciaux</a>
+              <a href="/locaux-commerciaux">Magasin</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Fermes</a>
             </div>
           </li>
-         <?php if (!isset($_SESSION['email'])): ?>
-             <li class="nav-item"><a href="/connexion">Connexion</a></li>
-          <?php endif; ?>
+          <li class="nav-item"><a href="contact.php">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
         <div class="quick-actions">
-          <?php if (isset($_SESSION['email'])): ?>
-            <span class="user-email"><?php echo 'Compte:'.htmlspecialchars($_SESSION['email']); ?></span>
-          <?php else: ?>
-            <a href="/inscription" class="button secondary">Inscription</a>
-          <?php endif; ?>
-
-          <a href="/deposer-annonce" class="button primary">Déposer une annonce</a>
+          <a href="deposer-annonce" class="button primary">Déposer une annonce</a>
         </div>
         <form class="search-form" action="/recherche" method="get">
           <input type="search" name="q" placeholder="Rechercher..." aria-label="Recherche">
@@ -56,12 +50,7 @@ session_start();
     </div>
   </header>
 
-  <main>
-    <div class="container">
-      <h1>Bienvenue, <?php echo htmlspecialchars($_SESSION['identifiant']); ?> !</h1>
-      <p>Vous êtes maintenant connecté.</p>
 
-    </div>
-  </main>
 </body>
+
 </html>
