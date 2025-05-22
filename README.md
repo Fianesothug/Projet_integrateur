@@ -243,13 +243,13 @@ SELECT COUNT(*) FROM rendezvous WHERE statut = 'confirmé';
 ________________________________________
 ✅ Résumé : To-do Back-End
 Action	Fait ?
-Connexion à la base (PDO)	❌
-Authentification et gestion des rôles	❌
-Sécurité via middlewares	❌
+Connexion à la base (PDO)	
+Authentification et gestion des rôles	
+Sécurité via middlewares	
 Gestion des propriétés (CRUD)	⏳
 Favoris et rendez-vous	⏳
-Affectation clients/agents	❌
-Statistiques Manager	❌
-Traitement des formulaires + upload fichiers	❌
+Affectation clients/agents	
+Statistiques Manager	
+Traitement des formulaires + upload fichiers	
 
 
