@@ -32,7 +32,7 @@
               <a href="/locaux-commerciaux">Fermes</a>
             </div>
           </li>
-          <li class="nav-item"><a href="contact.php">Contact</a></li>
+
         </ul>
       </nav>
 
@@ -49,7 +49,6 @@
       </div>
     </div>
   </header>
-
 
 </body>
 
