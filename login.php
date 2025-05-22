@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <?php include("includes/header.php"); ?>
+  <?php include("includes/header_connexion.php"); ?>
   <div class="page-center">
     <div class="main_content">
       <!-- Onglets -->
