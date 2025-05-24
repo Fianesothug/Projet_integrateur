@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="assets/css/inscription.css">
     <!-- Ajout de SweetAlert pour de belles alertes -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- gestion du nombre de chiffre pour le code pays choisi -->
-     <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.21/bundle/libphonenumber-js.min.js"></script>
     <!-- Ajout de jQuery pour faciliter les requêtes AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -51,7 +49,7 @@
 
             // Configuration de l'email
             $email_destinataire = $email;
-            $email_sujet = "Vos informations d'inscription";
+            $email_sujet = "HOUSE COMPAGNY";
 
             $civilite = ($sexe == 'masculin') ? 'Monsieur' : 'Madame';
             $email_message = "
