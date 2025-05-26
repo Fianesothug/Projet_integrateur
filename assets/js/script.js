@@ -1,5 +1,5 @@
 function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
+  let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -13,7 +13,7 @@ function openTab(evt, tabName) {
 }
 
 // Ouvre le premier onglet par défaut au chargement de la page
-window.onload = function() {
-  var firstTab = document.getElementsByClassName('tablinks')[0];
+window.onload = function () {
+  let firstTab = document.getElementsByClassName('tablinks')[0];
   if (firstTab) firstTab.click();
 };
