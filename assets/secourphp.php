@@ -1,20 +1,36 @@
-<!-- login.php -->
-<?php include_once './includes/header.php'; ?>
-<link rel="stylesheet" href="<?= $baseURL ?>/assets/css/style.css">
-<div class="card_container">
-  <div class="card">
-    <h2>Connexion</h2>
+<link rel="stylesheet" href="assets/css/header.css">
 
-    <!-- FORMULAIRE -->
-    <form class="form" action="traitement-login.php" method="POST">
-      <input type="email" name="email" placeholder="Adresse e-mail" class="email" required>
-      <input type="password" name="password" placeholder="Mot de passe" class="pass" required>
+</head>
 
+<body>
+  <header class="main-header">
+    <div class="header-container">
+      <a href="/" class="branding">
+        <div class="logo">HC</div>
+        <h1 class="site-name">HOUSE-COMPANY</h1>
+      </a>
 
-      <!-- BOUTON LOGIN -->
-      <button type="submit" class="login_btn">Se connecter</button>
-    </form>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.php">Accueil</a></li>
+          <li class="nav-item dropdown">
+            <a href="#">Propriétés ▼</a>
+            <div class="dropdown-content">
+              <a href="/appartements">Appartements</a>
+              <a href="/villas">Villas</a>
+              <a href="/terrains">Terrains</a>
+              <a href="/locaux-commerciaux">Locaux Commerciaux</a>
+              <a href="/locaux-commerciaux">Magasin</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Paillotes</a>
+              <a href="/locaux-commerciaux">Fermes</a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="contact.php">Contact</a></li>
+        </ul>
+      </nav>
 
+<<<<<<< HEAD
     <!-- LIEN VERS INSCRIPTION -->
     <p class="fp">Pas encore de compte ? <a href="register.php"><span class="inscri">Inscrivez-vous</span></a></p>
   </div>
@@ -187,3 +203,19 @@
 </script>
 </body>
 </html>
+=======
+      <div class="header-actions">
+        <div class="quick-actions">
+          <a href="login.php" class="button secondary">Se connecter/S'inscrire</a>
+          <a href="deposer-annonce" class="button primary">Déposer une annonce</a>
+        </div>
+        <form class="search-form" action="/recherche" method="get">
+          <input type="search" name="q" placeholder="Rechercher..." aria-label="Recherche">
+          <button type="submit" class="search-button">
+            <span aria-hidden="true">🔍</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </header>
+>>>>>>> 55dfb48 (Travail en cours sur secourphp.php)
