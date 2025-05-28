@@ -155,3 +155,208 @@
 
 
 
+
+     
+        /*pied de page*/
+
+
+  /* ====== FOOTER IMPROVÉ ====== */
+        a{
+            text-decoration: none;
+        
+        }
+        footer {
+            background: linear-gradient(135deg, #8B0000, #6B0000);
+            color: #fff;
+            padding: 50px 10% 30px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #f4f4f4, transparent);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            color: #f4f4f4;
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li a {
+            
+            color: #f4f4f4;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: block;
+        }
+
+        .footer-section ul li a:hover {
+            color:#f4f4f4;
+            padding-left: 5px;
+        }
+
+        .dropdown-footer {
+            position: relative;
+        }
+
+        .dropdown-content-footer {
+            display: none;
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+
+        .dropdown-footer.active-footer .dropdown-content-footer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-toggle-footer {
+            position: relative;
+            color: #f4f4f4;
+        }
+
+        .dropdown-toggle-footer::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-footer.active-footer .dropdown-toggle-footer::after {
+            transform: rotate(180deg);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+       
+
+        .social-links a:hover img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-links img {
+            width: 20px;
+            height: 20px;
+            transition: filter 0.3s ease;
+        }
+
+        .opening-hours {
+            margin-top: 15px;
+        }
+
+        .opening-hours p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .opening-hours p::before {
+            content: '✔️';
+            margin-right: 10px;
+            color: #f4f4f4;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ====== RESPONSIVE FOOTER ====== */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-section {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .dropdown-content-footer {
+                padding-left: 0;
+                border-left: none;
+                text-align: center;
+            }
+        }
+        footer{
+            margin-left: 0.2cm;
+            margin-right: 0.2cm;
+        }
+        .dropdown-toggle-footer{
+            text-decoration:none;
+        }
+      
+
+
+
+
+
+
+
