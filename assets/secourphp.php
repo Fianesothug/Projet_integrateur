@@ -1,34 +1,3 @@
-<!-- login.php -->
-<?php include_once './includes/header.php'; ?>
-<link rel="stylesheet" href="<?= $baseURL ?>/assets/css/style.css">
-<div class="card_container">
-  <div class="card">
-    <h2>Connexion</h2>
-
-    <!-- FORMULAIRE -->
-    <form class="form" action="traitement-login.php" method="POST">
-      <input type="email" name="email" placeholder="Adresse e-mail" class="email" required>
-      <input type="password" name="password" placeholder="Mot de passe" class="pass" required>
-
-
-      <!-- BOUTON LOGIN -->
-      <button type="submit" class="login_btn">Se connecter</button>
-    </form>
-
-    <!-- LIEN VERS INSCRIPTION -->
-    <p class="fp">Pas encore de compte ? <a href="register.php"><span class="inscri">Inscrivez-vous</span></a></p>
-  </div>
-
-
-  
-   <!-- pied de page  -->
-
-
-</div>
-<?php include_once 'includes/footer.php'; ?>
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
    
     <title>IRSS FASO</title>
-    <link rel="stylesheet" href="css/pied.css">
+    <link rel="stylesheet" href="cssSsecours.css">
 </head>
 <body>
 <!-- Début du pied de page amélioré -->
@@ -138,6 +107,21 @@
             </div>
         </div>
     </div>
+
+     <li class="dropdown-footer">
+                    <a href="#" class="dropdown-toggle-footer">
+                        <i class="fas fa-file-signature"></i> Menbre de l'équipe
+                    </a>
+                    <div class="dropdown-content-footer">
+                        <br>
+                        <p>  1 - </p>
+                        <p>  2 - </p>
+                        <p>  3 - </p>
+                        <p>  4 - </p>
+                        <p>  5 - </p>
+                        <p>  6 - </p>
+                    </div>
+                </li>
 
     <div class="footer-bottom">
         <h3>
