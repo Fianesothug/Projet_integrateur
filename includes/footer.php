@@ -1,15 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="assets/css/footer.css">
-  <title>Document</title>
-</head>
-<body>
+<!-- FOOTER -->
+<link rel="stylesheet" href="assets/css/footer.css">
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>HOUSE-COMPANY</h4>
+        <p>Votre partenaire immobilier de confiance </p>
+        <p>Nous offrons des solutions immobilières adaptées à vos besoins.</p>
+      </div>
 
- <footer>
-   HOUSE-COMPANY. Tous droits réservés.
- </footer>
-</body>
-</html>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> 79 92 10 13</p>
+        <p><i class="fas fa-envelope"></i> house-company@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Rue avenue Bassawarga, Ouagadougou</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Liens rapides</h4>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">Nos services</a></li>
+          <li><a href="#">Propriétés</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Inscrivez-vous</h4>
+        <p>Recevez les dernières offres exclusives</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Votre email">
+          <button class="btn btn-primary">S'inscrire</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 HOUSE-COMPANY - Tous droits réservés.</p>
+    </div>
+  </div>
+</footer>

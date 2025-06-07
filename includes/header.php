@@ -1,46 +1,34 @@
-<link rel="stylesheet" href="assets/css/header.css">
+ <!-- HEADER -->
+ <link rel="stylesheet" href="assets/css/style.css">
+ <link rel="stylesheet" href="assets/css/header.css">
 
-</head>
+ <header class="site-header">
+   <div class="container">
+     <div class="header-content">
 
-<body>
-  <header class="main-header">
-    <div class="header-container">
-      <a href="/" class="branding">
-        <div class="logo">HC</div>
-        <h1 class="site-name">HOUSE-COMPANY</h1>
-      </a>
+       <a href="#" class="logo">
+         <i class="fas fa-home"></i>
+         <span>HOUSE-COMPANY</span>
+       </a>
 
-      <nav class="main-nav">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="index.php">Accueil</a></li>
-          <li class="nav-item dropdown">
-            <a href="#">Propriétés ▼</a>
-            <div class="dropdown-content">
-              <a href="/appartements">Appartements</a>
-              <a href="/villas">Villas</a>
-              <a href="/terrains">Terrains</a>
-              <a href="/locaux-commerciaux">Locaux Commerciaux</a>
-              <a href="/locaux-commerciaux">Magasin</a>
-              <a href="/locaux-commerciaux">Paillotes</a>
-              <a href="/locaux-commerciaux">Paillotes</a>
-              <a href="/locaux-commerciaux">Fermes</a>
-            </div>
-          </li>
-          <li class="nav-item"><a href="contact.php">Contact</a></li>
-        </ul>
-      </nav>
+       <button class="mobile-menu-btn">
+         <i class="fas fa-bars"></i>
+       </button>
 
-      <div class="header-actions">
-        <div class="quick-actions">
-          <a href="login.php" class="button secondary">Se connecter/S'inscrire</a>
-          <a href="deposer-annonce" class="button primary">Déposer une annonce</a>
-        </div>
-        <form class="search-form" action="/recherche" method="get">
-          <input type="search" name="q" placeholder="Rechercher..." aria-label="Recherche">
-          <button type="submit" class="search-button">
-            <span aria-hidden="true">🔍</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </header>
+       <ul class="nav-menu">
+         <li><a href="index.php" class="nav-link active">Accueil</a></li>
+         <li><a href="#" class="nav-link">Acheter</a></li>
+         <li><a href="#" class="nav-link">Louer</a></li>
+         <li><a href="#" class="nav-link">Agences</a></li>
+         <li><a href="contact.php" class="nav-link">Contact</a></li>
+       </ul>
+
+       <div class="user-actions">
+         <a href="login.php" class="btn btn-outline">Connexion</a>
+         <a href="register.php" class="btn btn-primary">Inscription</a>
+       </div>
+     </div>
+   </div>
+
+
+ </header>

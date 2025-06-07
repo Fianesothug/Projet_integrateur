@@ -1,55 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet_integrateur</title>
-  <?php include('includes/header.php'); ?>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/header.css">
+  <title>HOUSE-COMPANY</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+
 </head>
 
 <body>
 
-  <main>
-    <section class="accueil">
-      <h1>Bienvenue sur HOUSE-COMPANY</h1>
-      <p>La plateforme de gestion immobilière en ligne.</p>
-      <a href="login.php" class="btn">Se connecter</a>
-      <a href="register.php" class="btn">S'inscrire</a>
+  <?php include_once ('includes/header.php'); ?>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h1>Trouvez la propriété de vos rêves</h1>
+      <p>Découvrez notre sélection exclusive de biens immobiliers à travers le pays</p>
 
-    </section>
-  </main>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Rechercher par lieu, type, prix...">
+        <button id="search-btn"><i class="fas fa-search"></i> Rechercher</button>
+      </div>
+    </div>
+  </section>
 
-  <div class="wrapper">
-    <div class="wrapper_container">
-      <div class="box image1-box"></div> <!-- Ajoute image-box ici -->
+  <!-- CATÉGORIES DE PROPRIÉTÉS -->
+  <section class="container">
+    <h2 class="section-title">Catégories de propriétés</h2>
+
+    <div class="categories">
+      <button class="category-btn active" data-category="all">Tous</button>
+      <button class="category-btn" data-category="appartement">Appartements</button>
+      <button class="category-btn" data-category="maison">Maisons</button>
+      <button class="category-btn" data-category="villa">Villas</button>
+      <button class="category-btn" data-category="bureau">Bureaux</button>
+      <button class="category-btn" data-category="commercial">Commerces</button>
     </div>
 
-
-    <!-- Grid partie-->
-    <div class="row">
-
-      <div class="span1"></div>
-      <div class="span2"></div>
-      <div class="span3"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-
-
+    <!-- PROPRIÉTÉS GRID -->
+    <div class="properties-grid" id="properties-grid">
+      <!-- Propriétés chargées dynamiquement par JavaScript -->
     </div>
-  </div>
+  </section>
 
-  <?php include('includes/footer.php'); ?>
+  <!-- TABLEAU DE BORD (exemple) -->
+  <section class="dashboard-container">
+    <?php include_once ('includes/sidebar.php')?>
+  </section>
 
+
+
+
+  <script src="script.js"></script>
+
+  <?php include_once ('includes/footer.php'); ?>
 </body>
 
 </html>

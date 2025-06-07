@@ -1,9 +1,111 @@
+ /* === FOOTER === */
+        .site-footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0 0;
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
 
-footer {
-  background-color:  #007bff;
-  color: #fff;
-  padding: 1em;
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
+
+        /* Assure que le body prend toute la hauteur de l'écran */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+/* Le wrapper de la page permet de gérer les hauteurs */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Le contenu principal prend l'espace restant */
+.contact-container {
+  flex: 1;
+}
+
+/* Footer toujours en bas */
+.site-footer {
+  background-color: #333;
+  color: white;
+  padding: 30px 0;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 220px;
+  margin: 10px;
+}
+
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            padding: 1rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-section p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin: 0.75rem 0;
+        }
+
+        .footer-section a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
