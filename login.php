@@ -25,7 +25,7 @@
       <div id="Connexion" class="tabcontent">
         <h2>Connexion</h2>
         <!-- inclusion du php de la connexion -->
-        <?php include('connexion.php') ?>
+        <?php include_once('connexion.php') ?>
 
         <form method="POST" action="">
           <label for="identifiant">Identifiant:</label>

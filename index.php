@@ -53,7 +53,7 @@
 
 
 
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 
   <?php include_once ('includes/footer.php'); ?>
 </body>

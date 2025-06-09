@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation d'inscription</title>
-    <link rel="stylesheet" href="assets/css/inscription.css">
-    <!-- Ajout de SweetAlert pour de belles alertes -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Ajout de jQuery pour faciliter les requêtes AJAX -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation d'inscription</title>
+  <link rel="stylesheet" href="assets/css/inscription.css">
+  <!-- Ajout de SweetAlert pour de belles alertes -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Ajout de jQuery pour faciliter les requêtes AJAX -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
-<body>
-    <div class="container">
-        <h1 class="hh"><a href="login.php">CONNEXION</a></h1>
 
-        <?php
+<body>
+  <?php include_once ('includes/header.php'); ?>
+
+  <div class="container">
+    <h1 class="hh"><a href="login.php">CONNEXION</a></h1>
+
+    <?php
         // Désactiver l'affichage des erreurs
         error_reporting(0);
         ini_set('display_errors', 0);
@@ -254,63 +258,65 @@
         }
         ?>
 
-        <script>
-        // Fonction pour vérifier le numéro de téléphone
-        function verifierNumero(numeroComplet) {
-            const { parsePhoneNumberFromString } = window.libphonenumber;
-            const phoneNumber = parsePhoneNumberFromString(numeroComplet);
+    <script>
+    // Fonction pour vérifier le numéro de téléphone
+    function verifierNumero(numeroComplet) {
+      const {
+        parsePhoneNumberFromString
+      } = window.libphonenumber;
+      const phoneNumber = parsePhoneNumberFromString(numeroComplet);
 
-            if (phoneNumber && phoneNumber.isValid()) {
-                return true;
-            } else {
-                alert("Numéro de téléphone invalide.");
-                return false;
-            }
-        }
+      if (phoneNumber && phoneNumber.isValid()) {
+        return true;
+      } else {
+        alert("Numéro de téléphone invalide.");
+        return false;
+      }
+    }
 
-        // Script pour réessayer l'envoi d'email via AJAX
-        $(document).ready(function() {
-            $('#retryButton').click(function() {
+    // Script pour réessayer l'envoi d'email via AJAX
+    $(document).ready(function() {
+      $('#retryButton').click(function() {
+        Swal.fire({
+          title: 'Envoi en cours...',
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+
+            $.ajax({
+              type: "POST",
+              url: "resend_email.php",
+              data: {
+                email: "<?php echo isset($email_destinataire) ? $email_destinataire : ''; ?>",
+                sujet: "<?php echo isset($email_sujet) ? addslashes($email_sujet) : ''; ?>",
+                message: `<?php echo isset($email_message) ? addslashes($email_message) : ''; ?>`
+              },
+              success: function(response) {
                 Swal.fire({
-                    title: 'Envoi en cours...',
-                    allowOutsideClick: false,
-                    didOpen: () => {
-                        Swal.showLoading();
-                        
-                        $.ajax({
-                            type: "POST",
-                            url: "resend_email.php",
-                            data: {
-                                email: "<?php echo isset($email_destinataire) ? $email_destinataire : ''; ?>",
-                                sujet: "<?php echo isset($email_sujet) ? addslashes($email_sujet) : ''; ?>",
-                                message: `<?php echo isset($email_message) ? addslashes($email_message) : ''; ?>`
-                            },
-                            success: function(response) {
-                                Swal.fire({
-                                    icon: response.success ? 'success' : 'error',
-                                    title: response.success ? 'Email envoyé!' : 'Erreur',
-                                    text: response.message
-                                });
-                                
-                                if (response.success) {
-                                    $('#emailError').remove();
-                                }
-                            },
-                            error: function() {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Erreur',
-                                    text: 'Une erreur est survenue lors de la communication avec le serveur'
-                                });
-                            }
-                        });
-                    }
+                  icon: response.success ? 'success' : 'error',
+                  title: response.success ? 'Email envoyé!' : 'Erreur',
+                  text: response.message
                 });
-            });
-        });
-        </script>
 
-        <?php
+                if (response.success) {
+                  $('#emailError').remove();
+                }
+              },
+              error: function() {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Erreur',
+                  text: 'Une erreur est survenue lors de la communication avec le serveur'
+                });
+              }
+            });
+          }
+        });
+      });
+    });
+    </script>
+
+    <?php
         // Création du fichier resend_email.php s'il n'existe pas
         if (!file_exists('resend_email.php')) {
             $resend_email_code = '<?php
@@ -388,9 +394,12 @@
             }
             ?>';
 
-            file_put_contents('resend_email.php', $resend_email_code);
-        }
-        ?>
-    </div>
+    file_put_contents('resend_email.php', $resend_email_code);
+
+    }
+    ?>
+  </div>
+  <?php include_once ('includes/footer.php'); ?>
 </body>
+
 </html>

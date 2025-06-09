@@ -89,3 +89,42 @@
             background-color: var(--primary);
             color: white;
         }
+
+
+
+/* === MENU DROPDOWN === */
+       .dropdown ul { list-style: none; padding: 0; }
+        
+        a { text-decoration: none;color: #000000;    display: block; padding: 8px 15px; }
+        
+        /* Niveau principal */
+       li { position: relative; display: inline-block; }
+        .dropdown li:hover { background-color: var(--primary); }
+        
+        /* Sous-menu */
+        .dropdown {
+            position: absolute;
+            display: none;
+            left: 0;
+            top: 100%;
+            min-width: 200px;
+            background: white;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+        
+        /* Affichage au survol + zone de transition */
+        li:hover > .dropdown { display: block; }
+        .dropdown { margin-top: 5px; }
+        .dropdown::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+
+        }
+
+
+
+
