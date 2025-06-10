@@ -1,3 +1,44 @@
+// Fonction pour gérer les onglets
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+
+  // Masquer tous les contenus d'onglets
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Désactiver tous les boutons d'onglets
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Afficher l'onglet courant et activer le bouton
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Afficher le premier onglet par défaut
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('.tablinks').click();
+
+  // Réinitialiser les formulaires
+  document.querySelectorAll('form').forEach(form => {
+    form.reset();
+  });
+});
+
+window.addEventListener('beforeunload', () => {
+  // Réinitialise tous les formulaires avant de quitter la page
+  document.querySelectorAll('form').forEach(form => {
+    form.reset();
+  });
+});
+
+
+
+
 
 
 // Données des propriétés (simulation de base de données)
