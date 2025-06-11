@@ -37,12 +37,9 @@ window.addEventListener('beforeunload', () => {
 });
 
 
-
-
-
-
 // Données des propriétés (simulation de base de données)
 const properties = [
+  // ***********************APPARTEMENTS***************************
   {
     id: 1,
     title: "Appartement moderne",
@@ -52,35 +49,11 @@ const properties = [
     size: "85m²",
     bedrooms: 3,
     bathrooms: 2,
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "assets/images/proprietes/images/appartement/appart1.jpg",
     tag: "À vendre"
   },
   {
     id: 2,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tag: "Location"
-  },
-  {
-    id: 3,
-    title: "Villa contemporaine",
-    type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tag: "À vendre"
-  },
-  {
-    id: 4,
     title: "Loft industriel",
     type: "appartement",
     location: "Lyon 3ème",
@@ -88,8 +61,265 @@ const properties = [
     size: "110m²",
     bedrooms: 2,
     bathrooms: 1,
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "assets/images/proprietes/images/appartement/appart2.jpg",
     tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart3.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart4.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart5.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart6.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart7.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 2,
+    title: "Loft industriel",
+    type: "appartement",
+    location: "Lyon 3ème",
+    price: "420,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartement/appart8.jpg",
+    tag: "À vendre"
+  },
+  //*******************MAISON*****************************
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison1.jpg",
+    tag: "Location"
+  },
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison2.jpg",
+    tag: "Location"
+  },
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison3.jpg",
+    tag: "Location"
+  },
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison4.jpg",
+    tag: "Location"
+  },
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison5.jpg",
+    tag: "Location"
+  },
+  {
+    id: 3,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/maison/maison6.jpg",
+    tag: "Location"
+  },
+
+
+  // *****************VILLA********************************
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa1.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa2.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa3.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa4.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa5.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa6.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa7.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 4,
+    title: "Villa contemporaine",
+    type: "villa",
+    location: "Côte d'Azur",
+    price: "1,250,000",
+    size: "220m²",
+    bedrooms: 5,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/villa/villa8.jpg",
+    tag: "À vendre"
+  },
+  // ****************BUREAU **********************************
+  {
+    id: 5,
+    title: "Bureau moderne",
+    type: "bureau",
+    location: "La Défense",
+    price: "780,000",
+    size: "120m²",
+    bedrooms: 0,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/burreau/burreau1.jpg",
+    tag: "Location"
   },
   {
     id: 5,
@@ -100,21 +330,135 @@ const properties = [
     size: "120m²",
     bedrooms: 0,
     bathrooms: 2,
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "assets/images/proprietes/images/burreau/burreau2.jpg",
     tag: "Location"
   },
+  {
+    id: 5,
+    title: "Bureau moderne",
+    type: "bureau",
+    location: "La Défense",
+    price: "780,000",
+    size: "120m²",
+    bedrooms: 0,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/burreau/burreau3.jpg",
+    tag: "Location"
+  },
+  {
+    id: 5,
+    title: "Bureau moderne",
+    type: "bureau",
+    location: "La Défense",
+    price: "780,000",
+    size: "120m²",
+    bedrooms: 0,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/burreau/burreau4.jpg",
+    tag: "Location"
+  },
+  {
+    id: 5,
+    title: "Bureau moderne",
+    type: "bureau",
+    location: "La Défense",
+    price: "780,000",
+    size: "120m²",
+    bedrooms: 0,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/burreau/burreau5.jpg",
+    tag: "Location"
+  },
+  {
+    id: 5,
+    title: "Bureau moderne",
+    type: "bureau",
+    location: "La Défense",
+    price: "780,000",
+    size: "120m²",
+    bedrooms: 0,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/burreau/burreau6.jpg",
+    tag: "Location"
+  },
+
+  //****************COMMERCIAL******************************
   {
     id: 6,
     title: "Local commercial",
     type: "commercial",
-    location: "Marseille",
+    location: "Ouagadougou",
     price: "650,000",
     size: "180m²",
     bedrooms: 0,
     bathrooms: 1,
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "assets/images/proprietes/images/commercial/local1.jpg",
+    tag: "À vendre"
+  },
+
+  {
+    id: 7,
+    title: "Local commercial",
+    type: "commercial",
+    location: "Ouagadougou",
+    price: "650,000",
+    size: "180m²",
+    bedrooms: 0,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/commercial/local2.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 8,
+    title: "Local commercial",
+    type: "commercial",
+    location: "Ouagadougou",
+    price: "650,000",
+    size: "180m²",
+    bedrooms: 0,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/commercial/local3.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 9,
+    title: "Local commercial",
+    type: "commercial",
+    location: "Ouagadougou",
+    price: "650,000",
+    size: "180m²",
+    bedrooms: 0,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/commercial/local4.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 10,
+    title: "Local commercial",
+    type: "commercial",
+    location: "Ouagadougou",
+    price: "650,000",
+    size: "180m²",
+    bedrooms: 0,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/commercial/local5.jpg",
+    tag: "À vendre"
+  },
+  {
+    id: 10,
+    title: "Local commercial",
+    type: "commercial",
+    location: "Ouagadougou",
+    price: "650,000",
+    size: "180m²",
+    bedrooms: 0,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/commercial/local6.jpg",
     tag: "À vendre"
   }
+
+
+
 ];
 
 // Fonction pour afficher les propriétés
@@ -131,7 +475,7 @@ function displayProperties(filteredProperties = properties) {
                         <button class="favorite-btn"><i class="far fa-heart"></i></button>
                     </div>
                     <div class="property-content">
-                        <div class="property-price">€${property.price}</div>
+                        <div class="property-price">${property.price}FCFA</div>
                         <h3 class="property-title">${property.title}</h3>
                         <div class="property-location">
                             <i class="fas fa-map-marker-alt"></i>
