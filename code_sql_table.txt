@@ -22,3 +22,35 @@ CREATE TABLE client (
     identifiant VARCHAR(100) UNIQUE,
     code VARCHAR(255)
 );
+CREATE TABLE IF NOT EXISTS `bailleurs` (
+  `id` int AUTO_INCREMENT PRIMARY KEY,
+  `id_personne` varchar(50) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `code_pays` varchar(10) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `indentifiant` varchar(20) NOT NULL,
+  `numero_pv` varchar(20) NOT NULL,
+  `date_creation` datetime
+);
+CREATE TABLE IF NOT EXISTS `agents` (
+  `id` int AUTO_INCREMENT PRIMARY KEY,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `code_pays` varchar(10) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `numero_pv` varchar(20) NOT NULL,
+  `date_creation` date
+);
+CREATE TABLE IF NOT EXISTS `managers` (
+  `id` int AUTO_INCREMENT PRIMARY KEY,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `code_pays` varchar(10) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  `numero_pv` varchar(20) NOT NULL,
+  `date_creation` date
+) 
