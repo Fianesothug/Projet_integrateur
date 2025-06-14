@@ -5,10 +5,12 @@
  <header class="site-header">
    <div class="container">
      <div class="header-content">
-
+         <!-- le logo qui bouge comporte un lien vers la presentation -->
+        <a href="formulaire.PHP#presentation">
+            <img src="assets/images/bannieres/logo.jpg" alt="User" class="user-image">
+        </a>
        <a href="#" class="logo">
-         <i class="fas fa-home"></i>
-         <span>HOUSE-COMPANY</span>
+        <span>HOUSE-COMPANY</span>
        </a>
 
        <button class="mobile-menu-btn">
@@ -29,11 +31,9 @@
        </ul>
 
        <div class="user-actions">
-         <a href="login.php" class="btn btn-outline">Connexion</a>
-         <a href="inscription.php" class="btn btn-primary">Inscription</a>
+         <a href="login.php" class="btn btn-outline">Connexion/Inscription</a>
+         <a href="components/protection.php" class="btn btn-primary">admis</a>
        </div>
      </div>
    </div>
-
-
  </header>
