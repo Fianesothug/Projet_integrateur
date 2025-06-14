@@ -470,28 +470,28 @@ function displayProperties(filteredProperties = properties) {
     const propertyCard = document.createElement('div');
     propertyCard.className = 'property-card';
     propertyCard.innerHTML = `
-                    <div class="property-image" style="background-image: url('${property.image}')">
-                        <span class="property-tag">${property.tag}</span>
-                        <button class="favorite-btn"><i class="far fa-heart"></i></button>
-                    </div>
-                    <div class="property-content">
-                        <div class="property-price">${property.price}FCFA</div>
-                        <h3 class="property-title">${property.title}</h3>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            ${property.location}
-                        </div>
-                        <div class="property-details">
-                            <span><i class="fas fa-bed"></i> ${property.bedrooms} chambres</span>
-                            <span><i class="fas fa-bath"></i> ${property.bathrooms} sdb</span>
-                            <span><i class="fas fa-ruler-combined"></i> ${property.size}</span>
-                        </div>
-                    </div>
-                `;
+      <div class="property-image" style="background-image: url('${property.image}')">
+          <span class="property-tag">${property.tag}</span>
+          <button class="favorite-btn"><i class="far fa-heart"></i></button>
+      </div>
+      <div class="property-content">
+          <div class="property-price">${property.price}FCFA</div>
+          <h3 class="property-title">${property.title}</h3>
+          <div class="property-location">
+              <i class="fas fa-map-marker-alt"></i>
+              ${property.location}
+          </div>
+          <div class="property-details">
+              <span><i class="fas fa-bed"></i> ${property.bedrooms} chambres</span>
+              <span><i class="fas fa-bath"></i> ${property.bathrooms} sdb</span>
+              <span><i class="fas fa-ruler-combined"></i> ${property.size}</span>
+          </div>
+      </div>
+    `;
     propertiesGrid.appendChild(propertyCard);
   });
 
-  // Gestion des boutons favoris
+  // Gestion des boutons favoris a rendre  dynamique et lie a la base donnée
   document.querySelectorAll('.favorite-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       this.classList.toggle('active');

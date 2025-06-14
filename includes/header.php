@@ -18,19 +18,19 @@
        <ul class="nav-menu">
          <li><a href="index.php" class="nav-link active">Accueil</a></li>
 
-         <li><a href="agences.php" class="nav-link">Agences</a></li>
          <li><a href="propriete.php">Propriétes</a>
            <ul class="dropdown">
              <li><a href="vente.php">Propriétes à vendre</a></li>
              <li><a href="louer.php">Propriétes à louer</a></li>
            </ul>
          </li>
+         <li><a href="services.php" class="nav-link">Services</a></li>
+
          <li><a href="contact.php" class="nav-link">Contact</a></li>
        </ul>
 
        <div class="user-actions">
-         <a href="login.php" class="btn btn-outline">Connexion</a>
-         <a href="inscription.php" class="btn btn-primary">Inscription</a>
+         <a href="login.php" class="btn btn-outline">Connexion/Inscription</a>
        </div>
      </div>
    </div>

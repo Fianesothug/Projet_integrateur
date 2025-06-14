@@ -20,9 +20,8 @@
         <h4>Liens rapides</h4>
         <ul>
           <li><a href="index.php">Accueil</a></li>
-          <li><a href="agences.php">Agences</a></li>
-          <li><a href="#">Nos services</a></li>
           <li><a href="propriete">Propriétés</a></li>
+          <li><a href="services.php">Nos services</a></li>
           <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
