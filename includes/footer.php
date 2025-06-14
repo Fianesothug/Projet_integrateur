@@ -31,11 +31,7 @@
         <h4>Inscrivez-vous</h4>
         <p>Recevez les dernières offres exclusives</p>
         <div class="newsletter-form">
-           <form action="footer-message.php">
-                <input type="email" placeholder="Votre email">
-                 <br>
-                <button class="btn btn-primary">S'inscrire</button>
-           </form>
+           <?php include('footer-message.php') ?>
         </div>
       </div>
     </div>

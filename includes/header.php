@@ -1,7 +1,31 @@
  <!-- HEADER -->
  <link rel="stylesheet" href="assets/css/style.css">
  <link rel="stylesheet" href="assets/css/header.css">
-
+<style>
+   /* Affichage image  */
+        .user-image {
+            height:83px;
+            width:83px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 24%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: bounceImage 2s infinite ease-in-out;
+        }
+        @keyframes bounceImage {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-10px);}
+        }
+        .user-image:hover {
+            animation: bounceImageHover 0.5s ease-in-out;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes bounceImageHover {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-12px);}
+        }
+       
+</style>
  <header class="site-header">
    <div class="container">
      <div class="header-content">
