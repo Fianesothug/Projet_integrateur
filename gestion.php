@@ -5,123 +5,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion Locative - HOUSE COMPANY</title>
-  <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f7f9fc;
-    color: #333;
-  }
-
-  header {
-    background-color: #007acc;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  header h1 {
-    margin: 0;
-    font-size: 36px;
-    letter-spacing: 1px;
-  }
-
-  header p {
-    margin-top: 10px;
-    font-size: 18px;
-    font-style: italic;
-  }
-
-  .container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
-  .intro {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-  }
-
-  .intro h2 {
-    color: #002d5f;
-    font-size: 28px;
-  }
-
-  .intro p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-
-  .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
-  .service-card {
-    background-color: white;
-    padding: 20px;
-    border-left: 5px solid #007acc;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
-
-  .service-card h3 {
-    margin-top: 0;
-    color: #007acc;
-  }
-
-  .service-card p {
-    font-size: 15px;
-    color: #444;
-  }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+  <?php include_once('includes/header.php'); ?>
 
-  <header>
-    <h1>Gestion Locative</h1>
-    <p>HOUSE COMPANY - Votre tranquillité, notre priorité</p>
+  <header class="page-header">
+    <div class="page-header-content">
+      <h1 class="page-title">Gestion Locative</h1>
+      <p class="page-subtitle">HOUSE COMPANY - Optimisez la rentabilité de vos biens immobiliers avec notre service de
+        gestion locative professionnel</p>
+    </div>
   </header>
 
-  <div class="container">
-    <div class="intro">
-      <h2>Confiez-nous la gestion de vos biens immobiliers</h2>
-      <p>
+  <div class="page-container">
+    <section class="content-section">
+      <h2 class="section-title"><i class="fas fa-building"></i> Confiez-nous la gestion de vos biens immobiliers</h2>
+      <p class="section-text">
         Optimisez la rentabilité de votre investissement immobilier en nous confiant la gestion de vos biens.
         Nous assurons la <strong>location</strong>, l'<strong>entretien</strong> et la <strong>gestion
           administrative</strong>.
       </p>
-    </div>
 
-    <div class="services">
-      <div class="service-card">
-        <h3>Location</h3>
-        <p>
-          Nous trouvons rapidement des locataires fiables grâce à notre réseau et nos outils de diffusion performants.
-        </p>
+      <div class="services">
+        <div class="service-card">
+          <h3>Location</h3>
+          <p>
+            Nous trouvons rapidement des locataires fiables grâce à notre réseau et nos outils de diffusion performants.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Entretien</h3>
+          <p>
+            Gestion des réparations, entretien régulier, suivi des interventions techniques : votre bien est entre de
+            bonnes mains.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Gestion Administrative</h3>
+          <p>
+            Rédaction des baux, quittances, suivi des paiements et relances : on s'occupe de tout, pour vous.
+          </p>
+        </div>
       </div>
-      <div class="service-card">
-        <h3>Entretien</h3>
-        <p>
-          Gestion des réparations, entretien régulier, suivi des interventions techniques : votre bien est entre de
-          bonnes mains.
-        </p>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title"><i class="fas fa-list-check"></i> Nos Services de Gestion Locative</h2>
+      <div class="grid-container">
+        <div class="content-section">
+          <h3><i class="fas fa-search"></i> Recherche et Sélection des Locataires</h3>
+          <p>Nous effectuons une sélection rigoureuse des locataires avec vérification complète des dossiers et des
+            garanties.</p>
+        </div>
+
+        <div class="content-section">
+          <h3><i class="fas fa-file-contract"></i> Gestion Administrative</h3>
+          <p>Rédaction des baux, états des lieux, quittances de loyer et gestion de toute la documentation légale.</p>
+        </div>
+
+        <div class="content-section">
+          <h3><i class="fas fa-coins"></i> Gestion Financière</h3>
+          <p>Encaissement des loyers, charges, et dépôts de garantie. Relance des impayés et gestion des contentieux.</p>
+        </div>
+
+        <div class="content-section">
+          <h3><i class="fas fa-wrench"></i> Suivi Technique</h3>
+          <p>Organisation et suivi des travaux d'entretien, coordination avec les artisans et gestion des urgences
+            techniques.</p>
+        </div>
       </div>
-      <div class="service-card">
-        <h3>Gestion Administrative</h3>
-        <p>
-          Rédaction des baux, quittances, suivi des paiements et relances : on s'occupe de tout, pour vous.
-        </p>
+    </section>
+
+    <section class="content-section">
+      <h2 class="section-title"><i class="fas fa-shield-alt"></i> Nos Garanties</h2>
+      <ul class="feature-list">
+        <li><i class="fas fa-check"></i> Garantie des loyers impayés</li>
+        <li><i class="fas fa-check"></i> Protection juridique complète</li>
+        <li><i class="fas fa-check"></i> Assurance dégradations locatives</li>
+        <li><i class="fas fa-check"></i> Bilan de gestion mensuel détaillé</li>
+      </ul>
+      <div class="text-center" style="margin-top: 2rem;">
+        <a href="contact.php" class="page-btn">
+          <i class="fas fa-envelope"></i> Contactez-nous pour plus d'informations
+        </a>
       </div>
-    </div>
+    </section>
   </div>
-  <?php include_once ('includes/footer.php'); ?>
+
+  <?php include_once('includes/footer.php'); ?>
 </body>
 
 </html>

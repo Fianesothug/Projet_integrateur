@@ -1,3 +1,8 @@
+<?php include_once('includes/init.php'); ?>
+<?php
+// Vérifier si l'utilisateur est connecté
+$isLoggedIn = isset($_SESSION['user_id']) ? 'true' : 'false';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,11 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOUSE-COMPANY</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
-<body>
+<body data-user-logged-in="<?php echo $isLoggedIn; ?>">
 
   <?php include_once ('includes/header.php'); ?>
   <!-- HERO SECTION -->
@@ -33,8 +38,7 @@
     <div class="categories">
       <button class="category-btn active" data-category="all">Tous</button>
       <button class="category-btn" data-category="appartement">Appartements</button>
-      <button class="category-btn" data-category="maison">Maisons</button>
-      <button class="category-btn" data-category="villa">Villas</button>
+      <button class="category-btn" data-category="maison">Maisons/Villa</button>
       <button class="category-btn" data-category="bureau">Bureaux</button>
       <button class="category-btn" data-category="commercial">Commerces</button>
     </div>
@@ -44,14 +48,6 @@
       <!-- Propriétés chargées dynamiquement par JavaScript -->
     </div>
   </section>
-
-  <!-- TABLEAU DE BORD (exemple) -->
-  <section class="dashboard-container">
-    <?php include_once ('includes/sidebar.php')?>
-  </section>
-
-
-
 
   <script src="assets/js/script.js"></script>
 

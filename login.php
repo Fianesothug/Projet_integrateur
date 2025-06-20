@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/login.css">
-  <title>Document</title>
+  <title>login</title>
 </head>
+
 <body>
-  
+
   <?php include("includes/header_connexion.php"); ?>
   <br>
   <br>
@@ -72,7 +74,8 @@
           <input type="text" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
 
           <label for="identifiant_inscription">Identifiant:</label>
-          <input type="text" id="identifiant_inscription" name="identifiant" placeholder="Entrez votre identifiant" required>
+          <input type="text" id="identifiant_inscription" name="identifiant" placeholder="Entrez votre identifiant"
+            required>
 
           <label for="code">Code : <br> (un renforcement de la sécurité est prévu)</label>
           <input type="password" id="code" name="code" placeholder="Entrez votre mot de passe" required>
@@ -86,19 +89,19 @@
 
   <?php include("includes/footer.php"); ?>
   <script>
-    // Pour chaque formulaire de la page, on le réinitialise au chargement
-         window.addEventListener('load', () => {
-  document.querySelectorAll('form').forEach(form => {
-    form.reset();
+  // Pour chaque formulaire de la page, on le réinitialise au chargement
+  window.addEventListener('load', () => {
+    document.querySelectorAll('form').forEach(form => {
+      form.reset();
+    });
   });
-});
 
-window.addEventListener('beforeunload', () => {
-  // Réinitialise tous les formulaires avant de quitter la page
-  document.querySelectorAll('form').forEach(form => {
-    form.reset();
+  window.addEventListener('beforeunload', () => {
+    // Réinitialise tous les formulaires avant de quitter la page
+    document.querySelectorAll('form').forEach(form => {
+      form.reset();
+    });
   });
-});
   </script>
 </body>
 

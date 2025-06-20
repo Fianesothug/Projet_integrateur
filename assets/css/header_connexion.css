@@ -1,0 +1,120 @@
+/* Header de connexion styles */
+:root {
+    --header-height: 100px;
+    --logo-size: 80px;
+    --spacing-unit: 1rem;
+}
+
+.site-header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.container-hdconnexion {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 calc(var(--spacing-unit) * 2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    padding: 0 calc(var(--spacing-unit) * 2);
+    position: relative;
+}
+
+/* Style de la navigation */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+}
+
+/* Style pour la section des actions utilisateur */
+.user-actions {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-left: calc(var(--spacing-unit) * 2);
+}
+
+/* Style du bouton admin */
+.btn-primary {
+    background-color: var(--primary, #2563eb);
+    color: white;
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du logo */
+.user-image {
+    height: var(--logo-size);
+    width: var(--logo-size);
+    object-fit: cover;
+    border-radius: 24%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animation du logo */
+@keyframes bounceImage {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(calc(var(--spacing-unit) * -0.625)); }
+}
+
+.user-image {
+    animation: bounceImage 2s infinite ease-in-out;
+}
+
+.user-image:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(calc(var(--spacing-unit) * -0.75));
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .container-hdconnexion {
+        padding: 0 calc(var(--spacing-unit) * 4);
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --header-height: 80px;
+        --logo-size: 60px;
+    }
+
+    .header-content {
+        padding: calc(var(--spacing-unit) * 0.5) 0;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --header-height: 70px;
+        --logo-size: 50px;
+    }
+
+    .container-hdconnexion {
+        padding: 0 var(--spacing-unit);
+    }
+}

@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Utilisateurs - Suppression avec Filtre</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<style>
-    .filtre .bout:hover {
+    <style>
+        .filtre .bout:hover {
             background-color: #0056b3; 
         }
-    .filtre .bout{
+        .filtre .bout {
             background-color: #007bff; 
             color: white;           
             border: none;           
@@ -21,40 +20,59 @@
             cursor: pointer;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
             transition: background-color 0.3s ease;
-    }
-    .filtre select{
-        font: 1em sans-serif;
-        font-size: 1.3rem;
-    }
-</style>
+        }
+        .filtre select, .filtre input[type="text"] {
+            font: 1em sans-serif;
+            font-size: 1.3rem;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .filter-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
 <body>
     <div class="container">      
         <!-- Section de filtrage -->
         <div class="filter-section">
-            <h3><i class="fas fa-filter"></i> Filtrer les utilisateurs</h3>
+            <h3><i class="fas fa-filter"></i> Filtrer le personnels</h3>
             <br>
             <form method="get" action="" class="filtre">
-                <select name="status_filter" id="status_filter">
-                    <option value="">Tous les statuts</option>
-                    <option value="Agent">Agent</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Bailleur">Bailleur</option>
-                    <option value="Administrateur">Administrateur</option>
-                    <option value="Client">Client</option>
-                </select>
-                 <br>
-                 <br>
-                <button type="submit">Filtrer</button>
+                <div class="form-group">
+                    <label for="search_term">Recherche par nom/prénom:</label>
+                    <input type="text" name="search_term" id="search_term" placeholder="Entrez un nom ou prénom..." value="<?php echo isset($_GET['search_term']) ? htmlspecialchars($_GET['search_term']) : ''; ?>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="status_filter">Filtrer par statut:</label>
+                    <select name="status_filter" id="status_filter">
+                        <option value="">Tous les statuts</option>
+                        <option value="Agent" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Agent') ? 'selected' : ''; ?>>Agent</option>
+                        <option value="Manager" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Manager') ? 'selected' : ''; ?>>Manager</option>
+                        <option value="Bailleur" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Bailleur') ? 'selected' : ''; ?>>Bailleur</option>
+                        <option value="Administrateur" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Administrateur') ? 'selected' : ''; ?>>Administrateur</option>
+                        <option value="Client" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Client') ? 'selected' : ''; ?>>Client</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="bout">Filtrer</button>
                 <button class="bout" type="button" onclick="window.location.href=window.location.pathname">Réinitialiser</button>
             </form>
         </div>
-     <br>
+        <br>
 
         <!-- Formulaire de modification -->
-         <section id="edit">.</section>
-         <br>
+        <section id="edit">.</section>
+        <br>
         <div id="editFormContainer" class="edit-form">
-            <h2><i class="fas fa-edit"></i> Modifier l'utilisateur</h2>
+            <h2><i class="fas fa-edit"></i> Modifier le personnels</h2>
             <form id="editForm" method="post">
                 <input type="hidden" name="id" id="edit_id">
                 <input type="hidden" name="update" value="1">
@@ -275,8 +293,13 @@
             // Maintenir la valeur du filtre après soumission
             const urlParams = new URLSearchParams(window.location.search);
             const statusFilter = urlParams.get('status_filter');
+            const searchTerm = urlParams.get('search_term');
+            
             if (statusFilter) {
                 document.getElementById('status_filter').value = statusFilter;
+            }
+            if (searchTerm) {
+                document.getElementById('search_term').value = searchTerm;
             }
         });
     </script>
@@ -494,6 +517,7 @@
         
         // Affichage des utilisateurs avec filtrage
         $status_filter = isset($_GET['status_filter']) ? trim($_GET['status_filter']) : '';
+        $search_term = isset($_GET['search_term']) ? trim($_GET['search_term']) : '';
         
         $query = "SELECT 
             p.id,
@@ -518,6 +542,16 @@
         WHERE 1=1 ";
         
         $params = [];
+        
+        // Ajout du filtre par recherche
+        if (!empty($search_term)) {
+            $query .= " AND (p.nom LIKE ? OR p.prenom LIKE ?)";
+            $search_param = "%$search_term%";
+            $params[] = $search_param;
+            $params[] = $search_param;
+        }
+        
+        // Ajout du filtre par statut
         if (!empty($status_filter)) {
             $query .= " AND r.role = ?";
             $params[] = $status_filter;
@@ -536,11 +570,11 @@
             echo '<table>';
             echo '<thead><tr>
                 <th>N°</th>
-                <th> Nom</th>
-                <th> Prénom</th>
-                <th> Sexe</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Sexe</th>
                 <th>Code</th>
-                <th> Numéro</th>
+                <th>Numéro</th>
                 <th>Email</th>
                 <th>Adresse</th>
                 <th>Rôle(s)</th>
@@ -577,7 +611,7 @@
         } else {
             echo '<div class="alert alert-info">
                 <i class="fas fa-info-circle"></i> 
-                Aucun utilisateur enregistré'.(!empty($status_filter) ? ' avec le statut "'.htmlspecialchars($status_filter).'"' : '').'.
+                Aucun utilisateur trouvé'.(!empty($search_term) ? ' avec le terme "'.htmlspecialchars($search_term).'"' : '').(!empty($status_filter) ? ' et avec le statut "'.htmlspecialchars($status_filter).'"' : '').'.
             </div>';
         }
         

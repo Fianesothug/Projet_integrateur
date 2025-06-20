@@ -5,40 +5,63 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.8rem 4%;
+            max-width: 1600px;
+            margin: 0 auto;
+            height: 80px;
+            position: relative;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            font-size: 1.25rem;
+            gap: 1rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
+            flex: 0 0 15%;
+            min-width: 200px;
         }
 
         .logo i {
-            font-size: 1.75rem;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover i {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+            flex: 0 0 50%;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
-            transition: color 0.2s;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
         }
 
         .nav-link:hover, .nav-link.active {

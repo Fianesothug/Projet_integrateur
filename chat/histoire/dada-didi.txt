@@ -1,0 +1,58 @@
+[
+    {
+        "timestamp": "2025-06-19 13:25:28",
+        "sender": "dada",
+        "message": "salut",
+        "isImage": false,
+        "id": "68540fc802f34"
+    },
+    {
+        "timestamp": "2025-06-19 13:25:35",
+        "sender": "didi",
+        "message": "oui salut",
+        "isImage": false,
+        "id": "68540fcfda6f8"
+    },
+    {
+        "timestamp": "2025-06-19 13:25:43",
+        "sender": "dada",
+        "message": "images\/dada-didi-1.jpg",
+        "isImage": true,
+        "id": "68540fd7b3395"
+    },
+    {
+        "timestamp": "2025-06-19 13:26:16",
+        "sender": "didi",
+        "message": "images\/dada-didi-2.jpg",
+        "isImage": true,
+        "id": "68540ff85ff32"
+    },
+    {
+        "timestamp": "2025-06-19 13:26:32",
+        "sender": "didi",
+        "message": "merci",
+        "isImage": false,
+        "id": "685410082a84c"
+    },
+    {
+        "timestamp": "2025-06-19 13:26:39",
+        "sender": "dada",
+        "message": "pas de quoi",
+        "isImage": false,
+        "id": "6854100ff3e82"
+    },
+    {
+        "timestamp": "2025-06-19 13:26:44",
+        "sender": "didi",
+        "message": "pas de quoi",
+        "isImage": false,
+        "id": "6854101409c3b"
+    },
+    {
+        "timestamp": "2025-06-19 13:26:46",
+        "sender": "dada",
+        "message": "pas de quoi",
+        "isImage": false,
+        "id": "68541016a7559"
+    }
+]

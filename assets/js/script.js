@@ -20,7 +20,7 @@ function openTab(evt, tabName) {
 }
 
 // Afficher le premier onglet par défaut
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('.tablinks').click();
 
   // Réinitialiser les formulaires
@@ -36,7 +36,6 @@ window.addEventListener('beforeunload', () => {
   });
 });
 
-
 // Données des propriétés (simulation de base de données)
 const properties = [
   // ***********************APPARTEMENTS***************************
@@ -44,273 +43,298 @@ const properties = [
     id: 1,
     title: "Appartement moderne",
     type: "appartement",
-    location: "Paris 15ème",
-    price: "350,000",
-    size: "85m²",
-    bedrooms: 3,
+    location: "Ouaga 2000",
+    price: "3,000,000",
+    size: "850m²",
+    bedrooms: 12,
+    bathrooms: 8,
+    image: "assets/images/proprietes/images/appartements/appart1/appart01.png",
+    tag: "Location"
+  },
+  {
+    id: 2,
+    title: "Appartement simple",
+    type: "appartement",
+    location: "Ouaga 2000 zone A",
+    price: "175,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartements/appart2/appart02.png",
+    tag: "À vendre"
+  },
+  {
+    id: 3,
+    title: "Appartement spacieux",
+    type: "appartement",
+    location: "Larlé",
+    price: "300,000",
+    size: "150m²",
+    bedrooms: 4,
     bathrooms: 2,
-    image: "assets/images/proprietes/images/appartement/appart1.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart2.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart3.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart4.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart5.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart6.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart7.jpg",
-    tag: "À vendre"
-  },
-  {
-    id: 2,
-    title: "Loft industriel",
-    type: "appartement",
-    location: "Lyon 3ème",
-    price: "420,000",
-    size: "110m²",
-    bedrooms: 2,
-    bathrooms: 1,
-    image: "assets/images/proprietes/images/appartement/appart8.jpg",
-    tag: "À vendre"
-  },
-  //*******************MAISON*****************************
-  {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison1.jpg",
+    image: "assets/images/proprietes/images/appartements/appart3/appart03.png",
     tag: "Location"
   },
   {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
+    id: 4,
+    title: "Appartement moderne",
+    type: "appartement",
+    location: "Tanghin",
+    price: "400,000",
+    size: "300m²",
     bedrooms: 4,
-    bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison2.jpg",
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/appartements/appart4/appart04.png",
     tag: "Location"
   },
   {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison3.jpg",
+    id: 5,
+    title: "Appartement de luxe",
+    type: "appartement",
+    location: "Nagrin",
+    price: "100,000",
+    size: "100m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartements/appart5/appart05.png",
     tag: "Location"
   },
   {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison4.jpg",
+    id: 6,
+    title: "Appartement simple",
+    type: "appartement",
+    location: "Nonssin",
+    price: "150,000",
+    size: "110m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartements/appart6/appart06.png",
     tag: "Location"
   },
   {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
-    bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison5.jpg",
+    id: 7,
+    title: "Appartement moderne",
+    type: "appartement",
+    location: "Ouaga 2000",
+    price: "550,000",
+    size: "500m²",
+    bedrooms: 6,
+    bathrooms: 4,
+    image: "assets/images/proprietes/images/appartements/appart7/appart07.png",
     tag: "Location"
   },
   {
-    id: 3,
-    title: "Maison de campagne",
-    type: "maison",
-    location: "Normandie",
-    price: "520,000",
-    size: "150m²",
-    bedrooms: 4,
+    id: 8,
+    title: "Appartement contemporain",
+    type: "appartement",
+    location: "Patte d'oie",
+    price: "350,000",
+    size: "250m²",
+    bedrooms: 2,
+    bathrooms: 1,
+    image: "assets/images/proprietes/images/appartements/appart8/appart08.png",
+    tag: "Location"
+  },
+  {
+    id: 9,
+    title: "Appartement spacieux",
+    type: "appartement",
+    location: "Zone du bois",
+    price: "420,000",
+    size: "450m²",
+    bedrooms: 5,
     bathrooms: 3,
-    image: "assets/images/proprietes/images/maison/maison6.jpg",
+    image: "assets/images/proprietes/images/appartements/appart9/appart09.png",
     tag: "Location"
   },
 
+  //*******************MAISON*****************************
+  {
+    id: 10,
+    title: "Villa 3 pièces",
+    type: "villa",
+    location: "Saba",
+    price: "20,000,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/vendre/vendre01/vendre01.png",
+    tag: "À vendre"
+  },
+  {
+    id: 11,
+    title: "Villa 3 pièces",
+    type: "maison",
+    location: "Cité Rimkièta",
+    price: "25,000,000",
+    size: "200m²",
+    bedrooms: 3,
+    bathrooms: 2,
+    image: "assets/images/proprietes/images/vendre/vendre02/vendre02.png",
+    tag: "À vendre"
+  },
+  {
+    id: 12,
+    title: "Villa 6 pièces",
+    type: "maison",
+    location: "Somgandé",
+    price: "280,000,000",
+    size: "400m²",
+    bedrooms: 6,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/vendre/vendre03/vendre03.png",
+    tag: "À vendre"
+  },
+  {
+    id: 13,
+    title: "Maison de luxe",
+    type: "maison",
+    location: "Ouaga 2000",
+    price: "1,000,000",
+    size: "850m²",
+    bedrooms: 8,
+    bathrooms: 5,
+    image: "assets/images/proprietes/images/vendre/vendre04/vendre04.png",
+    tag: "Location"
+  },
+  {
+    id: 14,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Karpala",
+    price: "90,000,000",
+    size: "300m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/vendre/vendre05/vendre05.png",
+    tag: "À vendre"
+  },
+  {
+    id: 15,
+    title: "Maison de campagne",
+    type: "maison",
+    location: "Normandie",
+    price: "520,000",
+    size: "150m²",
+    bedrooms: 4,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/vendre/vendre06/vendre06.png",
+    tag: "À vendre"
+  },
 
   // *****************VILLA********************************
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 16,
+    title: "Villa duplex 06 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
+    location: "Balkuy",
+    price: "200,000",
+    size: "300m²",
+    bedrooms: 6,
     bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa1.jpg",
-    tag: "À vendre"
+    image: "assets/images/proprietes/images/louer/louer1/villa1.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 17,
+    title: "Villa duplex 06 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
+    location: "Balkuy",
+    price: "200,000",
+    size: "300m²",
+    bedrooms: 6,
     bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa2.jpg",
-    tag: "À vendre"
+    image: "assets/images/proprietes/images/louer/louer02/villa2.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 18,
+    title: "Villa duplex 07 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa3.jpg",
-    tag: "À vendre"
+    location: "Cité Azimo",
+    price: "900,000",
+    size: "500m²",
+    bedrooms: 7,
+    bathrooms: 5,
+    image: "assets/images/proprietes/images/louer/louer03/villa3.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 19,
+    title: "Villa 7 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
+    location: "Ouaga 2000",
+    price: "350,000",
+    size: "300m²",
+    bedrooms: 7,
     bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa4.jpg",
-    tag: "À vendre"
+    image: "assets/images/proprietes/images/louer/louer04/villa4.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 20,
+    title: "Villa duplex 07 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa5.jpg",
-    tag: "À vendre"
+    location: "Ouaga 2000 Zone B",
+    price: "600,000",
+    size: "300m²",
+    bedrooms: 7,
+    bathrooms: 3,
+    image: "assets/images/proprietes/images/louer/louer05/villa5.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 21,
+    title: "Villa duplex 07 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
+    location: "Ouaga 2000",
+    price: "500,000",
+    size: "400m²",
+    bedrooms: 7,
     bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa6.jpg",
-    tag: "À vendre"
+    image: "assets/images/proprietes/images/louer/louer06/villa6.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 22,
+    title: "Villa 08 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa7.jpg",
-    tag: "À vendre"
+    location: "Somgandé",
+    price: "600,000",
+    size: "500m²",
+    bedrooms: 8,
+    bathrooms: 7,
+    image: "assets/images/proprietes/images/louer/louer07/villa7.png",
+    tag: "Location"
   },
   {
-    id: 4,
-    title: "Villa contemporaine",
+    id: 23,
+    title: "Villa duplex 08 pièces",
     type: "villa",
-    location: "Côte d'Azur",
-    price: "1,250,000",
-    size: "220m²",
-    bedrooms: 5,
-    bathrooms: 4,
-    image: "assets/images/proprietes/images/villa/villa8.jpg",
-    tag: "À vendre"
+    location: "Ouaga 2000",
+    price: "1,000,000",
+    size: "800m²",
+    bedrooms: 8,
+    bathrooms: 7,
+    image: "assets/images/proprietes/images/louer/louer08/villa8.png",
+    tag: "Location"
   },
+  {
+    id: 24,
+    title: "Villa duplex 09 pièces",
+    type: "villa",
+    location: "Ouaga 2000",
+    price: "600,000",
+    size: "800m²",
+    bedrooms: 9,
+    bathrooms: 7,
+    image: "assets/images/proprietes/images/louer/louer09/villa9.png",
+    tag: "Location"
+  },
+  
   // ****************BUREAU **********************************
   {
-    id: 5,
+    id: 25,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -322,7 +346,7 @@ const properties = [
     tag: "Location"
   },
   {
-    id: 5,
+    id: 26,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -334,7 +358,7 @@ const properties = [
     tag: "Location"
   },
   {
-    id: 5,
+    id: 27,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -346,7 +370,7 @@ const properties = [
     tag: "Location"
   },
   {
-    id: 5,
+    id: 28,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -358,7 +382,7 @@ const properties = [
     tag: "Location"
   },
   {
-    id: 5,
+    id: 29,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -370,7 +394,7 @@ const properties = [
     tag: "Location"
   },
   {
-    id: 5,
+    id: 30,
     title: "Bureau moderne",
     type: "bureau",
     location: "La Défense",
@@ -384,7 +408,7 @@ const properties = [
 
   //****************COMMERCIAL******************************
   {
-    id: 6,
+    id: 31,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -395,9 +419,8 @@ const properties = [
     image: "assets/images/proprietes/images/commercial/local1.jpg",
     tag: "À vendre"
   },
-
   {
-    id: 7,
+    id: 32,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -409,7 +432,7 @@ const properties = [
     tag: "À vendre"
   },
   {
-    id: 8,
+    id: 33,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -421,7 +444,7 @@ const properties = [
     tag: "À vendre"
   },
   {
-    id: 9,
+    id: 34,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -433,7 +456,7 @@ const properties = [
     tag: "À vendre"
   },
   {
-    id: 10,
+    id: 35,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -445,7 +468,7 @@ const properties = [
     tag: "À vendre"
   },
   {
-    id: 10,
+    id: 36,
     title: "Local commercial",
     type: "commercial",
     location: "Ouagadougou",
@@ -456,9 +479,6 @@ const properties = [
     image: "assets/images/proprietes/images/commercial/local6.jpg",
     tag: "À vendre"
   }
-
-
-
 ];
 
 // Fonction pour afficher les propriétés
@@ -471,38 +491,55 @@ function displayProperties(filteredProperties = properties) {
     propertyCard.className = 'property-card';
     propertyCard.innerHTML = `
       <div class="property-image" style="background-image: url('${property.image}')">
-          <span class="property-tag">${property.tag}</span>
-          <button class="favorite-btn"><i class="far fa-heart"></i></button>
+        <span class="property-tag">${property.tag}</span>
+        <a href="login.php" class="favorite-btn" data-property-id="${property.id}">
+          <i class="far fa-heart"></i>
+        </a>
       </div>
       <div class="property-content">
-          <div class="property-price">${property.price}FCFA</div>
-          <h3 class="property-title">${property.title}</h3>
-          <div class="property-location">
-              <i class="fas fa-map-marker-alt"></i>
-              ${property.location}
-          </div>
-          <div class="property-details">
-              <span><i class="fas fa-bed"></i> ${property.bedrooms} chambres</span>
-              <span><i class="fas fa-bath"></i> ${property.bathrooms} sdb</span>
-              <span><i class="fas fa-ruler-combined"></i> ${property.size}</span>
-          </div>
+        <div class="property-price">${property.price}FCFA${property.tag === 'Location' ? '/mois' : ''}</div>
+        <h3 class="property-title">${property.title}</h3>
+        <div class="property-location">
+          <i class="fas fa-map-marker-alt"></i>
+          ${property.location}
+        </div>
+        <div class="property-details">
+          <span><i class="fas fa-bed"></i> ${property.bedrooms} chambres</span>
+          <span><i class="fas fa-bath"></i> ${property.bathrooms} sdb</span>
+          <span><i class="fas fa-ruler-combined"></i> ${property.size}</span>
+        </div>
       </div>
     `;
     propertiesGrid.appendChild(propertyCard);
   });
 
-  // Gestion des boutons favoris a rendre  dynamique et lie a la base donnée
+  // Gestion simplifiée des favoris avec redirection
   document.querySelectorAll('.favorite-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
-      this.classList.toggle('active');
-      const icon = this.querySelector('i');
-      if (this.classList.contains('active')) {
-        icon.className = 'fas fa-heart';
-      } else {
-        icon.className = 'far fa-heart';
+    btn.addEventListener('click', function(e) {
+      if (!isUserLoggedIn()) {
+        e.preventDefault();
+        window.location.href = 'login.php';
       }
+      // Si l'utilisateur est connecté, le lien fonctionnera normalement
     });
   });
+}
+
+// Fonction pour vérifier si l'utilisateur est connecté
+function isUserLoggedIn() {
+  return document.body.dataset.userLoggedIn === 'true';
+}
+
+// Fonction pour afficher les notifications
+function showNotification(message, type = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
 }
 
 // Initialisation de l'affichage des propriétés
@@ -510,7 +547,7 @@ displayProperties();
 
 // Filtrage par catégorie
 document.querySelectorAll('.category-btn').forEach(button => {
-  button.addEventListener('click', function () {
+  button.addEventListener('click', function() {
     // Mettre à jour le bouton actif
     document.querySelectorAll('.category-btn').forEach(btn => {
       btn.classList.remove('active');
@@ -523,6 +560,11 @@ document.querySelectorAll('.category-btn').forEach(button => {
 
     if (category === 'all') {
       filteredProperties = properties;
+    } else if (category === 'maison' || category === 'villa') {
+      // Regrouper les maisons et villas ensemble
+      filteredProperties = properties.filter(property => 
+        property.type === 'maison' || property.type === 'villa'
+      );
     } else {
       filteredProperties = properties.filter(property => property.type === category);
     }
@@ -544,12 +586,16 @@ function performSearch() {
   }
 
   const filteredProperties = properties.filter(property => {
+    // Normaliser le type de propriété pour la recherche
+    let searchType = property.type;
+    if (searchType === 'villa') searchType = 'maison';
+
     return (
       property.title.toLowerCase().includes(searchTerm) ||
       property.location.toLowerCase().includes(searchTerm) ||
       property.price.toLowerCase().includes(searchTerm) ||
       property.tag.toLowerCase().includes(searchTerm) ||
-      property.type.toLowerCase().includes(searchTerm)
+      searchType.toLowerCase().includes(searchTerm)
     );
   });
 
@@ -557,18 +603,16 @@ function performSearch() {
 }
 
 searchBtn.addEventListener('click', performSearch);
-searchInput.addEventListener('keyup', function (event) {
+searchInput.addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
     performSearch();
   }
 });
 
 // Menu mobile
-document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
+document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
   document.querySelector('.nav-menu').classList.toggle('active');
 });
-
-
 
 const menuToggle = document.getElementById('menu-toggle');
 const navMenu = document.querySelector('.nav-menu');

@@ -22,23 +22,43 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
             transition: background-color 0.3s ease;
     }
-    .filtre select{
+    .filtre select, .filtre input {
         font: 1em sans-serif;
         font-size: 1.3rem;
+        padding: 8px;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .filter-section {
+        margin-bottom: 20px;
+    }
+    .search-container {
+        margin-bottom: 15px;
+    }
+    .search-container input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
     }
 </style>
 <body>
     <div class="container">      
         <!-- Section de filtrage -->
         <div class="filter-section">
-            <h3><i class="fas fa-filter"></i> Filtrer les utilisateurs</h3>
+            <h3><i class="fas fa-filter"></i> Filtrer le personnels</h3>
             <br>
             <form method="get" action="" class="filtre">
+                <div class="search-container">
+                    <input type="text" name="name_filter" id="name_filter" placeholder="Rechercher par nom ou prénom..." value="<?php echo isset($_GET['name_filter']) ? htmlspecialchars($_GET['name_filter']) : ''; ?>">
+                </div>
+                
                 <select name="status_filter" id="status_filter">
                     <option value="">Tous les statuts</option>
-                    <option value="Agent">Agent</option>
-                    <option value="Bailleur">Bailleur</option>
-                    <option value="Client">Client</option>
+                    <option value="Agent" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Agent') ? 'selected' : ''; ?>>Agent</option>
+                    <option value="Bailleur" <?php echo (isset($_GET['status_filter']) && $_GET['status_filter'] == 'Bailleur') ? 'selected' : ''; ?>>Bailleur</option>
                 </select>
                  <br>
                  <br>
@@ -50,7 +70,7 @@
         <!-- Formulaire de modification -->
          <section id="#edit">.</section>
         <div id="editFormContainer" class="edit-form">
-            <h2><i class="fas fa-edit"></i> Modifier l'utilisateur</h2>
+            <h2><i class="fas fa-edit"></i> Modifier le personnels</h2>
             <form id="editForm" method="post">
                 <input type="hidden" name="id" id="edit_id">
                 <input type="hidden" name="update" value="1">
@@ -213,6 +233,14 @@
                         deleteUrl += `&table=${encodeURIComponent(selectedOption)}`;
                     }
                     
+                    // Ajouter les paramètres de filtre actuels pour conserver le contexte
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const nameFilter = urlParams.get('name_filter');
+                    const statusFilter = urlParams.get('status_filter');
+                    
+                    if (nameFilter) deleteUrl += `&name_filter=${encodeURIComponent(nameFilter)}`;
+                    if (statusFilter) deleteUrl += `&status_filter=${encodeURIComponent(statusFilter)}`;
+                    
                     // Afficher un message de traitement
                     Swal.fire({
                         title: 'Suppression en cours...',
@@ -265,6 +293,11 @@
             if (statusFilter) {
                 document.getElementById('status_filter').value = statusFilter;
             }
+            
+            const nameFilter = urlParams.get('name_filter');
+            if (nameFilter) {
+                document.getElementById('name_filter').value = nameFilter;
+            }
         });
     </script>
 
@@ -296,11 +329,10 @@
             try {
                 $pdo->beginTransaction();
                 
-                // Mapping des rôles vers les tables
+                // Mapping des rôles vers les tables (seulement agents et bailleurs)
                 $role_tables = [
                     'Agent' => 'agents',
-                    'Bailleur' => 'bailleurs',
-                    'Client' => 'clients'
+                    'Bailleur' => 'bailleurs'
                 ];
                 
                 $message = '';
@@ -370,11 +402,10 @@
                                     SELECT role FROM (
                                         SELECT 'Agent' AS role FROM agents WHERE id_personne = ?
                                         UNION SELECT 'Bailleur' FROM bailleurs WHERE id_personne = ?
-                                        UNION SELECT 'Client' FROM clients WHERE id_personne = ?
                                     ) AS roles
                                 ";
                                 $check_roles = $pdo->prepare($remaining_roles_query);
-                                $check_roles->execute([$delete_id, $delete_id, $delete_id, $delete_id, $delete_id]);
+                                $check_roles->execute([$delete_id, $delete_id]);
                                 $remaining_roles = $check_roles->fetchAll(PDO::FETCH_COLUMN);
                                 
                                 if (empty($remaining_roles)) {
@@ -405,7 +436,20 @@
                             timer: 3000,
                             showConfirmButton: true
                         }).then(() => {
-                            window.location.href = window.location.pathname;
+                            // Conserver les paramètres de filtre après suppression
+                            let redirectUrl = window.location.pathname;
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const nameFilter = urlParams.get('name_filter');
+                            const statusFilter = urlParams.get('status_filter');
+                            
+                            if (nameFilter || statusFilter) {
+                                redirectUrl += '?';
+                                if (nameFilter) redirectUrl += 'name_filter=' + encodeURIComponent(nameFilter);
+                                if (nameFilter && statusFilter) redirectUrl += '&';
+                                if (statusFilter) redirectUrl += 'status_filter=' + encodeURIComponent(statusFilter);
+                            }
+                            
+                            window.location.href = redirectUrl;
                         });
                     </script>";
                 } else {
@@ -452,7 +496,20 @@
                             title: 'Modification réussie',
                             text: 'Utilisateur modifié avec succès!'
                         }).then(() => {
-                            window.location.href = window.location.pathname;
+                            // Conserver les paramètres de filtre après modification
+                            let redirectUrl = window.location.pathname;
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const nameFilter = urlParams.get('name_filter');
+                            const statusFilter = urlParams.get('status_filter');
+                            
+                            if (nameFilter || statusFilter) {
+                                redirectUrl += '?';
+                                if (nameFilter) redirectUrl += 'name_filter=' + encodeURIComponent(nameFilter);
+                                if (nameFilter && statusFilter) redirectUrl += '&';
+                                if (statusFilter) redirectUrl += 'status_filter=' + encodeURIComponent(statusFilter);
+                            }
+                            
+                            window.location.href = redirectUrl;
                         });
                     </script>";
                 } else {
@@ -477,6 +534,7 @@
         
         // Affichage des utilisateurs avec filtrage
         $status_filter = isset($_GET['status_filter']) ? trim($_GET['status_filter']) : '';
+        $name_filter = isset($_GET['name_filter']) ? trim($_GET['name_filter']) : '';
         
         $query = "SELECT 
             p.id,
@@ -494,14 +552,23 @@
         LEFT JOIN (
             SELECT id_personne, 'Agent' AS role FROM agents
             UNION SELECT id_personne, 'Bailleur' FROM bailleurs
-            UNION SELECT id_personne, 'Client' FROM clients
         ) r ON p.id = r.id_personne
         WHERE 1=1";
         
         $params = [];
+        
+        // Filtre par statut
         if (!empty($status_filter)) {
             $query .= " AND r.role = ?";
             $params[] = $status_filter;
+        }
+        
+        // Filtre par nom ou prénom
+        if (!empty($name_filter)) {
+            $query .= " AND (p.nom LIKE ? OR p.prenom LIKE ?)";
+            $search_term = '%' . $name_filter . '%';
+            $params[] = $search_term;
+            $params[] = $search_term;
         }
         
         $query .= " GROUP BY p.id, p.matricule, p.nom, p.prenom, p.sexe, p.pays, p.numero, p.email, p.adresse
@@ -558,7 +625,7 @@
         } else {
             echo '<div class="alert alert-info">
                 <i class="fas fa-info-circle"></i> 
-                Aucun utilisateur enregistré'.(!empty($status_filter) ? ' avec le statut "'.htmlspecialchars($status_filter).'"' : '').'.
+                Aucun utilisateur trouvé'.(!empty($status_filter) ? ' avec le statut "'.htmlspecialchars($status_filter).'"' : '').(!empty($name_filter) ? ' correspondant à "'.htmlspecialchars($name_filter).'"' : '').'.
             </div>';
         }
         

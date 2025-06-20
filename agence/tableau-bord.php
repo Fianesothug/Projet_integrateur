@@ -12,9 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-     <!-- inclusion entete -->
-      <?php include_once ('../includes/header.php'); ?>
-    <!-- Menu Burger pour mobile -->
+     <!-- entete -->
+    <?php include '../components/entete.php'; ?>
+
+       <!-- Menu Burger pour mobile -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
     </button>
@@ -25,14 +26,15 @@
         <h2><i class="fas fa-tachometer-alt  "></i> Tableau de bord <br> Administrative</h2>
         <ul>
             <li><a href="#tableau" class="active"><i class="fas fa-info-circle"></i> Description globale </a></li>
-            <li><a href="#utilisateurs"><i class="fas fa-users"></i> Inscription-utilisateurs</a></li>
+            <li><a href="#utilisateurs"><i class="fas fa-users"></i> Inscription-personnels</a></li>
+            <li><a href="#gesutil"><i class="fas fa-users"></i> Gestion du personnels</a></li>
             <li><a href="#gest"><i class="fas fa-users-cog"></i> Gestion des rôles</a></li>
             <li><a href="#bail"><i class="fas fa-house-user"></i> Bailleurs</a></li>
             <li><a href="#agen"><i class="fas fa-user-tie"></i> Agents</a></li>
             <li><a href="#mana"><i class="fas fa-user-tie"></i> Managers</a></li>
             <li><a href="#admi"><i class="fas fa-user-tie"></i> Administrateurs</a></li>
-            <li><a href="../components/protection.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
-        </ul>
+            <li><a href="../chat/form.php"><i class="fas fa-comments"></i> Chat de messagerie</a></li>
+            </ul>
     </div>
     <div class="corp">
      <section id='tableau'>.</section>
@@ -51,8 +53,8 @@
     <div class="dashboard-cards">
         <div class="card">
             <i class="fas fa-users fa-2x"></i>
-            <h3>Utilisateurs</h3>
-            <p>Gérez les inscriptions, modifiez ou supprimez les comptes utilisateurs.</p>
+            <h3>inscription et gestion du personnels</h3>
+            <p>Gérez les inscriptions, modifiez ou supprimez les comptes personnels.</p>
             <a href="#utilisateurs" class="btn">Voir plus</a>
         </div>
 
@@ -83,12 +85,11 @@
             <p>Générez les PV et suivez les informations liées aux managers.</p>
             <a href="#mana" class="btn">Voir plus</a>
         </div>
-
         <div class="card">
-            <i class="fas fa-sign-out-alt fa-2x"></i>
-            <h3>Déconnexion</h3>
-            <p>Terminez votre session en toute sécurité.</p>
-            <a href="../page-admis.php" class="btn logout">Se déconnecter</a>
+            <i class="fas fa-users"></i>
+            <h3>Chat de messagerie</h3>
+            <p>Contactez les clients ainsi que les menbres du personnels du sevices.</p>
+            <a href="../chat/form.php" class="btn">Voir plus</a>
         </div>
     </div>
 </div>
@@ -100,7 +101,7 @@
     <!-- inscription-utilisateur -->
     <div class="admin-main" id="adminMain">
         <div class="admin-header">
-            <h1><i class="fas fa-users"></i>Inscription-utilisateurs</h1>
+            <h1><i class="fas fa-users"></i>Inscription-personnels</h1>
     </div>
 
         <div id="Inscription" class="tabcontent">
@@ -144,9 +145,11 @@
         </form>
       </div>
        <br>
-
-      <h1><i class="fas fa-users"></i> Gestion des employées</h1>
-       <section id="gest-util">.</section>
+          <div class="admin-main" id="adminMain">
+        <div class="admin-header">
+            <h1><i class="fas fa-users"></i>Gestion du personnels</h1>
+    </div>
+       <section id="gesutil">.</section>
      <?php include 'tableau-agence.php'; ?>
 
     <!-- Formulaire de modification -->
@@ -377,9 +380,7 @@
         </div>
     </div>
  </div>  
-  <!-- inclusion pied -->
-      <?php include_once ('../includes/footer.php'); ?>
- 
+  
  </div>  
     <br><br>
     <script>

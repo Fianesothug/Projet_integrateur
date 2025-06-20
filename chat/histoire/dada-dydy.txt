@@ -1,0 +1,122 @@
+[
+    {
+        "timestamp": "2025-06-15 14:22:32",
+        "sender": "dydy",
+        "message": "moi",
+        "isImage": false
+    },
+    {
+        "timestamp": "2025-06-15 14:22:43",
+        "sender": "dada",
+        "message": "lui",
+        "isImage": false
+    },
+    {
+        "timestamp": "2025-06-15 14:23:46",
+        "sender": "dada",
+        "message": "images\/dada-dydy-1.png",
+        "isImage": true
+    },
+    {
+        "timestamp": "2025-06-15 15:45:45",
+        "sender": "dada",
+        "message": "comment vas tu",
+        "isImage": false
+    },
+    {
+        "timestamp": "2025-06-15 15:56:30",
+        "sender": "dada",
+        "message": "images\/dada-dydy-2.png",
+        "isImage": true
+    },
+    {
+        "timestamp": "2025-06-15 15:59:00",
+        "sender": "dydy",
+        "message": "images\/dada-dydy-3.jpg",
+        "isImage": true
+    },
+    {
+        "timestamp": "2025-06-15 16:11:56",
+        "sender": "dydy",
+        "message": "images\/dada-dydy-4.jpg",
+        "isImage": true,
+        "id": "684ef0cc30bd3"
+    },
+    {
+        "timestamp": "2025-06-15 16:12:00",
+        "sender": "dydy",
+        "message": "salut",
+        "isImage": false,
+        "id": "684ef0d0d2789"
+    },
+    {
+        "timestamp": "2025-06-15 16:31:16",
+        "sender": "dydy",
+        "message": "bete",
+        "isImage": false,
+        "id": "684ef5542bb91"
+    },
+    {
+        "timestamp": "2025-06-15 16:31:30",
+        "sender": "dada",
+        "message": "beee",
+        "isImage": false,
+        "id": "684ef562537c1"
+    },
+    {
+        "timestamp": "2025-06-15 16:36:35",
+        "sender": "dydy",
+        "message": "mmmmmmmmmm",
+        "isImage": false,
+        "id": "684ef693d58e2"
+    },
+    {
+        "timestamp": "2025-06-15 16:36:43",
+        "sender": "dydy",
+        "message": "images\/dada-dydy-6.jpg",
+        "isImage": true,
+        "id": "684ef69b31d95"
+    },
+    {
+        "timestamp": "2025-06-15 17:29:04",
+        "sender": "dydy",
+        "message": "mmmm",
+        "isImage": false,
+        "id": "684f02e02eab3"
+    },
+    {
+        "timestamp": "2025-06-15 18:53:52",
+        "sender": "dada",
+        "message": "jjjjj",
+        "isImage": false,
+        "id": "684f16c0df929"
+    },
+    {
+        "timestamp": "2025-06-15 18:53:55",
+        "sender": "dada",
+        "message": "ertfgyhjkl",
+        "isImage": false,
+        "id": "684f16c386f38"
+    },
+    {
+        "timestamp": "2025-06-15 18:54:03",
+        "sender": "dydy",
+        "message": "ptei",
+        "isImage": false,
+        "id": "684f16cb510de"
+    },
+    {
+        "timestamp": "2025-06-15 18:54:12",
+        "sender": "dydy",
+        "message": "images\/dada-dydy-7.jpg",
+        "isImage": true,
+        "id": "684f16d49bb41"
+    },
+    {
+        "timestamp": "2025-06-15 18:54:42",
+        "sender": "dada",
+        "message": "images\/dada-dydy-8.jpg",
+        "isImage": true,
+        "id": "684f16f22baea"
+    }
+]

@@ -57,7 +57,7 @@ if (!empty($identifiant) && !empty($code_bailleur)) {
             
             echo '</div>';
         } else {
-            echo '<p>Aucune propriété trouvée pour ce bailleur.</p>';
+            echo '<p>Aucune propriété trouvée pour ce agent.</p>';
         }
     } catch (PDOException $e) {
         echo '<p>Erreur lors de la récupération des propriétés: '.$e->getMessage().'</p>';

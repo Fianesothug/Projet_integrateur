@@ -1,11 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>moi mmmmm mmmm g</p>
-</body>
-</html>
+<?php
+session_start();
+header('Content-Type: application/json');
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode([]);
+    exit;
+}
+
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=gestion", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $pdo->prepare("SELECT property_id FROM favoris WHERE user_id = ?");
+    $stmt->execute([$_SESSION['user_id']]);
+    $favorites = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    echo json_encode($favorites);
+} catch(PDOException $e) {
+    echo json_encode([]);
+}

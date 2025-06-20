@@ -1,47 +1,62 @@
 <?php
 session_start();
 
-// Initialisation
+// Initialisation du message d'erreur
 $erreur = '';
 
-// Traitement du formulaire
+// Vérifie si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Informations de connexion à la base de données
     $host = 'localhost';
     $user = 'root';
     $password = '';
     $dbname = 'gestion';
 
+    // Connexion à MySQL
     $conn = new mysqli($host, $user, $password, $dbname);
 
+    // Vérification de la connexion
     if ($conn->connect_error) {
         die("Erreur de connexion à la base de données : " . $conn->connect_error);
     }
 
-    $identifiant = $_POST['identifiant'];
-    $code = $_POST['code'];
+    // Récupération des données du formulaire
+    $identifiant = trim($_POST['identifiant'] ?? '');
+    $code = trim($_POST['code'] ?? '');
 
-    // Requête préparée pour éviter les injections SQL
-    $stmt = $conn->prepare("SELECT * FROM personnes WHERE identifiant = ?");
-    $stmt->bind_param("s", $identifiant);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Vérifie que les champs ne sont pas vides
+    if (!empty($identifiant) && !empty($code)) {
+        // Requête préparée pour sécuriser contre les injections SQL
+        $stmt = $conn->prepare("SELECT * FROM personnes WHERE identifiant = ? AND code = ?");
+        if ($stmt) {
+            $stmt->bind_param("ss", $identifiant, $code);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
+            // Vérifie si un utilisateur correspondant a été trouvé
+            if ($result->num_rows === 1) {
+                $row = $result->fetch_assoc();
 
-        if (password_verify($code, $row['code'])) {
-            $_SESSION['identifiant'] = $row['identifiant'];
-             $_SESSION['email'] = $row['email']; 
-            header("Location: page_apres_connexion.php");
-            exit();
+                // Connexion réussie : enregistrement de la session
+                $_SESSION['identifiant'] = $row['identifiant'];
+                $_SESSION['statut'] = 'personnes'; // Ajout du statut pour savoir quelle table utiliser
+                $_SESSION['nom'] = $row['nom']; // Stockage du nom en session
+                $_SESSION['prenom'] = $row['prenom']; // Stockage du prénom en session
+
+                header("Location: clients/tableau-bord.php");
+                exit();
+            } else {
+                $erreur = "Identifiant ou code incorrect.";
+            }
+
+            $stmt->close();
         } else {
-            $erreur = "Mot de passe incorrect.";
+            $erreur = "Erreur lors de la préparation de la requête.";
         }
     } else {
-        $erreur = "Identifiant introuvable.";
+        $erreur = "Veuillez remplir tous les champs.";
     }
 
-    $stmt->close();
     $conn->close();
 }
 ?>

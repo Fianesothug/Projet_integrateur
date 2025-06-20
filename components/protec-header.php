@@ -41,6 +41,11 @@
     transform: translateY(-12px);
   }
 }
+.nom{
+  color:#1d4ed8;
+  margin-top:-75%;
+  margin-left:90%;
+}
   </style>
 
 
@@ -48,11 +53,11 @@
     <div class="container-container">
       <div class="header-content">
         <!-- le logo qui bouge comporte un lien vers la presentation -->
-        <a href="formulaire.PHP#presentation">
+        <a href="../index.php">
           <img src="../assets/images/bannieres/logo.jpg" alt="User" class="user-image">
+          <h2 class="nom">HOUSE <br> COMPANY</h2>
         </a>
         <a href="#" class="logo">
-          <span>HOUSE-COMPANY</span>
         </a>
 
         <button class="mobile-menu-btn">
@@ -62,9 +67,9 @@
         <ul class="nav-menu">
           <li><a href="../index.php" class="nav-link active">Accueil</a></li>
 
-          <li><a href="propriete.php">Propriétes</a>
+          <li><a href="../propriete.php">Propriétes</a>
             <ul class="dropdown">
-              <li><a href="v../ente.php">Propriétes à vendre</a></li>
+              <li><a href="../vente.php">Propriétes à vendre</a></li>
               <li><a href="../louer.php">Propriétes à louer</a></li>
             </ul>
           </li>
@@ -82,4 +87,5 @@
         </div>
       </div>
     </div>
+    <br>
   </header>

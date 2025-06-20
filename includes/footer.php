@@ -30,7 +30,7 @@
         <h4>Inscrivez-vous</h4>
         <p>Recevez les dernières offres exclusives</p>
         <div class="newsletter-form">
-           <?php include('footer-message.php') ?>
+          <a href="login.php">S'inscrire</a>
         </div>
       </div>
     </div>

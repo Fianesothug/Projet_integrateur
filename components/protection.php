@@ -3,48 +3,51 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Connexion - HOUSE COMPANY</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
     <link rel="stylesheet" href="../assets/css/protection.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-     <!-- inclusion entete -->
-      <?php include_once ('../includes/header.php'); ?>
-      <br>
- 
-    <div class="container">
-        <form method="POST" action="">
-            <h1 class="titre">CONNEXION</h1>
-            
-            <div class="form-group">
-                <label for="statut">Choisir statut</label>
-                <select id="statut" name="statut" required>
-                    <option value="" disabled selected>Choisir votre statut</option>
-                    <option value="bailleurs">Bailleur</option>
-                    <option value="agents">Agent</option>
-                    <option value="clients">Client</option>
-                    <option value="managers">Manager</option>
-                    <option value="administrateurs">Administrateur</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="identifiant">Votre identifiant</label>
-                <input type="text" id="identifiant" name="identifiant" placeholder="Entrez votre identifiant" required>
-            </div>
-            
-            <div class="form-group password-container">
-                <label for="mot_de_passe">Mot de passe</label>
-                <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Entrez votre mot de passe" required>
-            </div>
-            
-            <button type="submit" name="submit">Se connecter</button>
-            <button type="submit"><a class="haut" href="#" onclick="history.back()">Retour</a></button>
-             <h3>je n'ai pas de compte <a class="bas" href="../login.php"> S'inscrire.....</a></h3>
-      
-             <?php
+    <!-- inclusion entete -->
+    <?php include_once ('protec-header.php'); ?>
+    <br>
+<div class="container">
+    <form method="POST" action="">
+      <h1 class="titre">CONNEXION</h1>
+
+      <div class="form-group">
+        <label for="statut">Choisir statut</label>
+        <select id="statut" name="statut" required>
+          <option value="" disabled selected>Choisir votre statut</option>
+          <option value="bailleurs">Bailleur</option>
+          <option value="agents">Agent</option>
+          <option value="managers">Manager</option>
+          <option value="administrateurs">Administrateur</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="identifiant">Votre identifiant</label>
+        <input type="text" id="identifiant" name="identifiant" placeholder="Entrez votre identifiant" required>
+      </div>
+
+      <div class="form-group password-container">
+        <label for="mot_de_passe">Mot de passe</label>
+        <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="Entrez votre mot de passe" required>
+      </div>
+
+      <button type="submit" name="submit">Se connecter</button>
+      <button type="submit"><a class="haut" href="../index.php">Retour</a></button>
+      <h3>je n'ai pas de compte <a class="bas" href="../login.php"> S'inscrire.....</a></h3>
+
+      <?php
             if (isset($_POST['submit'])) {
                 $conn = new mysqli("localhost", "root", "", "gestion");
                 if ($conn->connect_error) die("Erreur de connexion : " . $conn->connect_error);
@@ -74,8 +77,6 @@ session_start();
                                 header("Location: ../bailleurs/tableau-bord.php"); break;
                             case 'agents':
                                 header("Location: ../employers/agents/tableau-bord.php"); break;
-                            case 'clients':
-                                header("Location: ../clients/tableau-bord.php"); break;
                             case 'managers':
                                 header("Location: ../employers/managers/tableau-bord.php"); break;
                             case 'administrateurs':
@@ -104,13 +105,13 @@ session_start();
                 ];
                 echo '<p class="error-message">Vous n\'êtes pas ' . $statuts[$statut] . ' ou vos identifiants sont incorrects.</p>';
             }
-            ?> 
-            
-        </form>
-          
-    </div>
-     <!-- inclusion pied -->
-      <?php include_once ('../includes/footer.php'); ?>
- 
+            ?>
+
+    </form>
+
+  </div>    <!-- inclusion pied -->
+    <?php include_once ('protec-footer.php'); ?>
+
 </body>
+
 </html>

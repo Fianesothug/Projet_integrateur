@@ -13,6 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+
+     <!-- entete -->
+    <?php include '../components/entete.php'; ?>
+    <br>
+    <br>
+    <br>
     <!-- Menu Burger pour mobile -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
@@ -29,8 +35,9 @@
             <li><a href="#vendue"><i class="fas fa-list"></i> Propriétés vendues</a></li>
             <li><a href="#loue"><i class="fas fa-list"></i> Propriétés louées</a></li>
             <li><a href="#operation"><i class="fas fa-plus-circle"></i> Operation pour client</a></li>
-            <li><a href="../../components/protection.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
-         </ul>
+            <li><a href="#liste"><i class="fas fa-users"></i> Listes des clients</a></li>
+            <li><a href="../../chat/form.php"><i class="fas fa-comments"></i> Chat de messagerie</a></li>
+        </ul>
     </div>
  <div class="corp">
      <section id='tableau'>.</section>
@@ -41,7 +48,7 @@
     
     <div class="admin-body">
         <p>
-            <strong>Bienvenue dans votre espace bailleur. Cet espace vous permet de gérer efficacement vos propriétés immobilières.</strong>
+            <strong>Bienvenue dans votre espace agent. Cet espace vous permet de gérer efficacement vos propriétés immobilières.</strong>
         </p>
         <br>
     
@@ -50,24 +57,27 @@
                 <i class="fas fa-plus-circle"></i>
                 <h3>Ajouter une propriété</h3>
                 <p>Publiez une nouvelle annonce immobilière</p>
+                <a href="#ajout" class="btn">Voir plus</a>
             </div>
             
             <div class="card" onclick="window.location.href='#propri'">
                 <i class="fas fa-home"></i>
                 <h3>Mes propriétés</h3>
                 <p>Gérez vos biens immobiliers</p>
+                <a href="#propri" class="btn">Voir plus</a>
             </div>
             <div class="card" onclick="window.location.href='#operation'">
                 <i class="fas fa-plus-circle"></i>
                 <h3>Operation pour client</h3>
                 <p>Gérez les opérations pour vos clients</p>
+                <a href="#operation" class="btn">Voir plus</a>
             </div>
-
-            <div class="card" onclick="window.location.href='../../components/protection.php'">
-                <i class="fas fa-sign-out-alt"></i>
-                <h3>Déconnexion</h3>
-                <p>Quitter votre espace personnel</p>
-            </div>
+         <div class="card">
+            <i class="fas fa-users"></i>
+            <h3>Chat de messagerie</h3>
+            <p>Contactez les clients ainsi que les menbres du personnels du sevices.</p>
+            <a href="../../chat/form.php" class="btn">Voir plus</a>
+        </div>
         </div>
     </div>
     <br>
@@ -222,9 +232,15 @@
         <button type="submit" name="operation_propriete" value="Effectuer" class="btn btn-primary">Effectuer</button>
         
     </form>
-</div> <br>
-   </div>
-      
+</div>
+ <br>
+     <div class="admin-header">
+        <h1><i class="fas fa-users"></i>Liste clients</h1>
+    </div>
+    <section id="liste"></section>
+     <?php include 'tableau.php'; ?>
+ <br>
+ <br> 
      <br><br>
     <script>
         // Toggle menu mobile
@@ -238,15 +254,7 @@
             this.classList.remove('active');
         });
 
-        // Gestion des onglets
-        const tabs = document.querySelectorAll('.tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                tabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                // Ici vous pourriez ajouter du code pour charger le contenu approprié
-            });
-        });
+        
         // Fermer le sidebar lorsqu'un lien est cliqué (pour version mobile)
 document.querySelectorAll('.admin-sidebar a').forEach(link => {
     link.addEventListener('click', function() {
@@ -258,9 +266,6 @@ document.querySelectorAll('.admin-sidebar a').forEach(link => {
     });
 });
    
-    </script>
-    <!-- Formulaire de modification -->
-    <script src="modifier-propriete.js"></script>
-     
+    </script>  
 </body>
 </html>

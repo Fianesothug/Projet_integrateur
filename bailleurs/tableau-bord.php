@@ -11,10 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../assets/css/bailleurs.css">
 </head>
-<body>
-    <!-- inclusion entete -->
-      <?php include_once ('../includes/header.php'); ?>
-      <br>
+<body data-page="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+
+    <!-- entete -->
+    <?php include '../components/entete.php'; ?>
+
     <!-- Menu Burger pour mobile -->
     <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
@@ -30,8 +31,8 @@
             <li><a href="#propri"><i class="fas fa-list"></i> Propriétés disponibles</a></li>
             <li><a href="#vendue"><i class="fas fa-list"></i> Propriétés vendues</a></li>
             <li><a href="#loue"><i class="fas fa-list"></i> Propriétés louées</a></li>
-            <li><a href="../components/protection.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a></li>
-         </ul>
+            <li><a href="../chat/form.php"><i class="fas fa-comments"></i> Chat de messagerie</a></li>
+        </ul>
     </div>
  <div class="corp">
      <section id='tableau'>.</section>
@@ -51,18 +52,23 @@
                 <i class="fas fa-plus-circle"></i>
                 <h3>Ajouter une propriété</h3>
                 <p>Publiez une nouvelle annonce immobilière</p>
+                <a href="#ajout" class="btn">Voir plus</a>
             </div>
             
             <div class="card" onclick="window.location.href='#propri'">
                 <i class="fas fa-home"></i>
                 <h3>Mes propriétés</h3>
                 <p>Gérez vos biens immobiliers</p>
+                <br>
+                <a href="#propri" class="btn">Voir plus</a>
             </div>
-            <div class="card" onclick="window.location.href='../components/protection.php'">
-                <i class="fas fa-sign-out-alt"></i>
-                <h3>Déconnexion</h3>
-                <p>Quitter votre espace personnel</p>
-            </div>
+
+        <div class="card">
+            <i class="fas fa-users"></i>
+            <h3>Chat de messagerie</h3>
+            <p>Contactez les clients ainsi que les menbres du personnels du sevices.</p>
+            <a href="../chat/form.php" class="btn">Voir plus</a>
+        </div>
         </div>
     </div>
     <br>
@@ -191,9 +197,6 @@
         <br>
     </div>
     <br><br>
-    <!-- inclusion pied -->
-      <?php include_once ('../includes/footer.php'); ?>
-      <br>
     <script>
         // Toggle menu mobile
         document.getElementById('menuToggle').addEventListener('click', function() {
